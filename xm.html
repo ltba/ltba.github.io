@@ -1,0 +1,67 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>虾漫post生成</title>  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
+</head><body>  搜索：<input type='text' id='搜索' value='搜索内容'><button type='button' onclick='f("搜索")'>生成</button><br>  章节：<input type='text' id='章节' value='章节ID'><button type='button' onclick='f("章节")'>生成</button><br>  内容：<input type='text' id='内容' value='内容ID'><button type='button' onclick='f("内容")'>生成</button><br>  如果显示重新登录就加上这个&#38;params%5Busername%5D=cai471600373&#38;params%5Btoken%5D=1019061b7d93eddf48217dc9931c7f299e62<br>  分类：<input type='text' id='分类' value='无视此框'><button type='button' onclick='f("分类")'>生成</button><br>  类型：<input type='text' id='类型' value='类型ID'><button type='button' onclick='f("类型")'>生成</button><br>  畅销：<input type='text' id='畅销' value='无视此框'><button type='button' onclick='f("畅销")'>生成</button><br>  我的收藏：<input type='text' id='我的收藏' value='无视此框'><button type='button' onclick='f("我的收藏")'>生成</button><br>  预览生成器：<input type='text' id='预览生成器' value='预览json信息'><button type='button' onclick='view()'>生成</button><br>    <p id='ct'>显示生成内容</p>  <button id="btn" data-clipboard-text='.ct'>点击复制</button>  <br><br><br><br><br>  https://yked.gitee.io/JavaScript.html<br>  https://yked.gitee.io/image.html<br>  iframe框架：网址:<input type='text' id='url'><button type='button' onclick='j()'>跳转</button>  <input type='text' id='height'><button type='button' onclick='ch()'>改高</button>  <iframe width='100%' height='auto' id='iframe'></iframe><script type="text/javascript">
+    window.onbeforeunload = function(){
+        return false; // This will stop the redirecting.
+    }
+    
+    function ch(){
+    var height=document.getElementById('height').value+'px';
+    var iframe=document.getElementById('iframe');
+    iframe.style.height=height;
+    }
+    function j(){
+    var iframe=document.getElementById('iframe');
+    var url=document.getElementById('url').value;
+    iframe.src=url;
+    }
+
+    function f(id){
+    var input=document.getElementById(id).value;
+    var ct=document.getElementById('ct');
+    var postu='http://app.91fuyun.com:8787/service/rest';
+    var postp='&#38;p=';
+    var post='http://coolaf.com/tool/gp?u=';
+    var posth='&#38;h=Content-Type%3Aapplication%2Fx-www-form-urlencoded';
+    
+    if(id=='搜索'){postp=postp+encodeURIComponent('apiVersion=v1&app_version=16&params%5Bsupports_pay%5D=1&params%5Bkeyword%5D='+input+'&api=cartoon.search')}
+    if(id=='章节'){postp=postp+encodeURIComponent('apiVersion=v1&params%5Bcartoon_id%5D='+input+'&app_version=3&api=cartoon.getcartoon')}
+    if(id=='内容'){postp=postp+encodeURIComponent('apiVersion=v1&params%5Bcartoon_id%5D='+input+'&params%5Bchapter_no%5D=1&api=cartoon.getcartoonchapter')}
+    if(id=='分类'){postp=postp+encodeURIComponent('apiVersion=v1&api=cartoon.getclasses')}
+    if(id=='类型'){postp=postp+encodeURIComponent('apiVersion=v1&params%5Bsupports_pay%5D=1&params%5Bclass_id%5D='+input+'&api=cartoon.getcartoons')}
+    if(id=='畅销'){postp=postp+encodeURIComponent('apiVersion=v1&params%5Bsupports_pay%5D=1&params%5Bclass_id%5D=99999&api=cartoon.getcartoons')}
+    if(id=='我的收藏'){postp=postp+encodeURIComponent('apiVersion=v1&api=user.listfav&params%5Busername%5D=cai471600373')}
+    
+    post=post+postu+postp+posth;
+    ct.innerHTML=post;
+    $('#btn').attr({'data-clipboard-text':post.replace('&#38;','&')});
+    }
+    var clipboard = new ClipboardJS('#btn');
+    clipboard.on('success', function(e) {
+    alert('复制成功！');
+    });
+
+    clipboard.on('error', function(e) {
+    alert('复制失败！');
+    });
+    function view(){
+    var result,id,title,pic_url,update_desc,string="",post="";
+    var input=document.getElementById('预览生成器').value;
+    var ct=document.getElementById('ct');
+    
+    result=JSON.parse(input).data;
+    $('#ct').text("");
+    for(var each of result){
+    id=each.id;
+    title=each.title;
+    pic_url=each.pic_url;
+    update_desc=each.update_desc;
+    post="<div onclick='alert(\""+id+"\")'><img src='"+pic_url+"'><br>"+title+" "+update_desc+" "+id+"</div>\n"
+    string+=post;
+    $p=$('</p>');
+    $p.text(post);
+    $('#ct').append($p);
+    }
+    $('#btn').attr({'data-clipboard-text':string});
+    }
+</script> </body></html>

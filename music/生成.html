@@ -1,0 +1,158 @@
+<!DOCTYPE html><html><head>    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    <title>audio生成</title>    <link rel="stylesheet" href='tplayer.css'>    <script src='tplayer.js'></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="music.js"></script>
+    <style>
+    body{background-color:#66ccff}
+    .main{width:60%;margin:0 auto;background-color:rgba(0, 0, 0, 0.4);}
+    #song_sheet{
+        position:fixed;
+        right:30%;
+        top:50px;
+        border:3px solid blue;
+    }
+    #song_sheet{color:blue}
+    #search_mode{display:inline}
+    #upanddown{display:inline}
+    </style></head><body><div class='main'><textarea id='end'></textarea><br><button type='button' onclick='end=JSON.parse($("#end").val());refresh()'>保存</button><button type='button' onclick='lrc_to_str()'>lrc转文本</button><div id='search_mode'><input type='radio' name='song_mode' value='0'>网易云</input><input type='radio' checked name='song_mode' value='1'>QQ音乐</input><input type='radio' name='song_mode' value='2'>酷狗</input></div><div id='upanddown'><input type='radio' name='upanddown' value='0'>添加到顶部</input><input type='radio' name='upanddown' checked value='1'>添加到底部</input></div><br><button type='button' onclick='导入()'>导入</button><button type='button' onclick='new_song_sheet()'>新建歌单</button>搜索:<input type='text' id='search'><button type='button' onclick='search()'>开始搜索</button><button type='button' onclick='$("#search_list").html("")'>清空搜索</button><ol id='search_list'></ol>name:<input type='text' id='name'><br>artist:<input type='text' id='artist'><br>url:<input type='text' id='url'><br>pic:<input type='text' id='pic'><br>lrc:<input type='text' id='lrc'><br><button type='button' onclick='addsong($("#name").val(),$("#artist").val(),$("#url").val(),$("#lrc").val(),$("#pic").val())'>添加歌曲</button></div><div id='song_sheet'></div><div id='TPlayer'></div><script>
+end=[];
+function new_song_sheet(){
+    var name = prompt("请输入name"),author = prompt("请输入author");
+    end.push({name:name,author:author,content:[]});
+    $('#song_sheet').append("<input type='radio' name='radio' value='"+document.getElementById("song_sheet").children.length/2+"'>"+name+" - "+author+"<br>");
+    refresh();
+}
+function 导入(){
+    var value=prompt("请输入json");
+    end=JSON.parse(value);
+    $('#song_sheet').html('');
+    for(let i in end){
+        $('#song_sheet').append("<input type='radio' name='radio' value='"+i+"'>"+end[i].name+" - "+end[i].author+"<br>");
+    }
+    refresh();
+}
+function check(){
+    for(let i of document.getElementById('song_sheet').children){
+        if(i.checked==true){
+            return Number(i.value)
+        }
+    }
+}
+function check_mode(){
+    for(let i of document.getElementById('search_mode').children){
+        if(i.checked==true){
+            return Number(i.value)
+        }
+    }
+}
+function check_ud(){
+    for(let i of document.getElementById('upanddown').children){
+        if(i.checked==true){
+            return Number(i.value)
+        }
+    }
+}
+function refresh(){
+    $('#end').val(JSON.stringify(end,null,4).replace("﻿",""));
+}
+function get_id(id){
+    return document.getElementById(id);
+}
+function get(url,type,callback){
+    $.ajax({
+        url:url,
+        type:type,
+        jsonpCallback:"callback",
+        success:callback,
+        dataType:'jsonp'
+    });
+}
+function search(){
+    switch(check_mode()){
+        case 0:
+            get('https://shenwu.net/music/api.php?types=search&count=40&source=netease&pages=1&name='+$("#search").val(),"GET",function(result){
+                $("#search_list").html("");
+                for(let n of result){
+                    mic.wy(n.url_id,function(url){$("#search_list").append("<li><span>"+n.name+" - "+n.artist[0]+"</span><audio controls preload='none' src='"+url+"'></audio><button type='button' onclick='wy_search_addsong(\""+n.name+"\",\""+n.artist[0]+"\",\""+n.url_id+"\",\""+n.lyric_id+"\",\""+n.pic_id+"\")'>加入歌单</button></li>");});
+                }
+            });
+            break
+        case 1:
+            get('https://c.y.qq.com/soso/fcgi-bin/client_search_cp?n=40&format=jsonp&w='+$("#search").val(),"GET",function(list){
+                result=list.data.song.list;
+                $("#search_list").html("");
+                for(let n of result){
+                    mic.qq(n.songmid,function(url){$("#search_list").append("<li><span>"+n.songname+" - "+n.singer[0].name+"</span><audio controls preload='none' src='"+url+"'></audio><button type='button' onclick='tx_search_addsong(\""+n.songname+"\",\""+n.singer[0].name+"\",\""+n.songmid+"\",\""+n.songmid+"\",\""+n.albummid+"\")'>加入歌单</button></li>");});
+                }
+            });
+            break
+        case 2:
+            get('https://songsearch.kugou.com/song_search_v2?page=1&platform=WebFilter&pagesize=40&keyword='+$("#search").val(),"GET",function(list){
+                result=list.data.lists;
+                $("#search_list").html("");
+                for(let n of result){
+                    mic.kg(n.FileHash,function(url){$("#search_list").append("<li><span>"+n.SongName+" - "+n.SingerName+"</span><audio controls preload='none' src='"+url+"'></audio><button type='button' onclick='kg_search_addsong(\""+n.SongName+"\",\""+n.SingerName+"\",\""+n.FileHash+"\",\""+n.FileHash+"\",\""+n.AlbumID+"\")'>加入歌单</button></li>");});
+                }
+            });
+            break
+    }
+}
+function addsong(name,artist,url,lrc,cover){
+    if(check()==undefined){alert('请选择歌单！');return;}
+    switch(check_ud()){
+        case 0:
+        end[check()].content.unshift({"name":name,"artist":artist,"url":url,"cover":cover,"lrc":lrc});
+        break
+        case 1:
+        end[check()].content.push({"name":name,"artist":artist,"url":url,"cover":cover,"lrc":lrc});
+        break
+    }
+    refresh();
+}
+function tx_search_addsong(name,artist,url_id,lrc_id,pic_id){
+    var nam=name,artis=artist;
+    get('https://shenwu.net/music/api.php?types=lyric&id='+lrc_id+'&source=tencent',"GET",function(result){
+        var lrc=result.lyric,url=url='https://xiani.toubiec.cn/api/micUrl?songId='+url_id+"&type=qq",name=nam,artist=artis,cover='https://y.gtimg.cn/music/photo_new/T002R300x300M000'+pic_id+'.jpg?max_age=2592000';
+        if(result.tlyric){lrc=result.tlyric}
+        addsong(name,artist,url,lrc,cover);
+    });
+}
+function wy_search_addsong(name,artist,url_id,lrc_id,pic_id){
+    var nam=name,artis=artist;
+    get('https://shenwu.net/music/api.php?types=lyric&id='+lrc_id+'&source=netease',"GET",function(result){
+        var lr=result.lyric,ur='https://xiani.toubiec.cn/api/micUrl?songId='+url_id+"&type=wy",na=nam,arti=artis,cover=pic_id;
+        if(result.tlyric){lr=result.tlyric}
+        get('https://shenwu.net/music/api.php?types=pic&id='+cover+'&source=netease',"GET",function(result){
+            var lrc=lr,url=ur,name=na,artist=arti,cover=pic_id;
+            addsong(name,artist,url,lrc,result.url);
+        });
+    });
+}
+function kg_search_addsong(name,artist,url_id,lrc_id,pic_id){
+    var nam=name,artis=artist;
+    get('https://wwwapi.kugou.com/yy/index.php?r=play/getdata&hash='+url_id+'&mid='+mic.getcookie("kg_mid"),"GET",function(result){
+        var name=nam,artist=artis,url='https://xiani.toubiec.cn/api/micUrl?songId='+url_id+"&type=kg",lrc=result.data.lyrics,pic=result.data.img.replace("http://imge.kugou.com","https://p3fx.kgimg.com").replace("http://singerimg.kugou.com","https://imgessl.kugou.com");
+        addsong(name,artist,url,lrc,pic);
+    });
+}
+function lrc_to_str(){
+    for(let i in end){
+        for(let n in end[i].content){
+            if(end[i].content[n].lrc[0]=="h"){
+                $.ajax({
+                    url:end[i].content[n].lrc,
+                    //type:"GET",
+                    //jsonpCallback:"callback",
+                    success:function(data){
+                        //console.log(data);
+                        end[i].content[n].lrc=data.txt;
+                        refresh();
+                    }//,
+                    //dataType:'jsonp'
+                });
+                //var start = (new Date()).getTime();
+                //while((new Date()).getTime() - start < 100) {continue}
+            }
+        }
+    }
+}
+</script></body></html>

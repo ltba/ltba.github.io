@@ -1,0 +1,83 @@
+.c-lucky {
+	background-image: url(background.png);
+	background-size: 650px;
+	height: 700px;
+	width: 700px;
+	background-repeat: no-repeat;
+	position: relative;
+	margin: auto;
+	z-index: 99;
+}
+
+.luckyName {
+	width: 308px;
+	height: 164px;
+	margin: 198px 0px 0px 197px;
+	position: relative;
+	display: inline-block;
+	font-size: 50px;
+	line-height: 50px;
+	overflow: hidden;
+	text-align: center;
+}
+
+.actionBtn {
+	width: 25px;
+	height: 85px;
+	background-color: transparent;
+	border: none;
+	background-image: url(action.png);
+	background-repeat: no-repeat;
+	background-size: 25px;
+	outline: none;
+	position: absolute;
+	z-index: 0;
+	top: 290px;
+	right: 138px;
+
+}
+
+.stopBtn {
+	width: 294px;
+	height: 54px;
+	position: absolute;
+	top: 409px;
+	left: 203px;
+	border-radius: 20px;
+	border: none;
+	background-color: transparent;
+	outline: none;
+	-moz-outline-radius: 20px;
+	-moz-outline-radius: 20px;
+	font-size: 40px;
+	color: white;
+}
+
+.c-lucky .name1,
+.c-lucky .name2,
+.c-lucky .name3 {
+	width: 308px;
+	height: 164px;
+	line-height: 164px;
+	position: absolute;
+
+}
+
+.c-lucky .name1 {
+	bottom: 164px;
+}
+
+.c-lucky .name2 {}
+
+.c-lucky .name3 {
+
+	top: 164px;
+}
+
+.isYou {
+	width: 400px;
+	position: absolute;
+	top: -15px;
+	left: -165px;
+	z-index: 999;
+}

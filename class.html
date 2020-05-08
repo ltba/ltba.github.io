@@ -1,0 +1,20 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>梦想(夢の)</title>  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://yked.gitee.io/background.js?v=1.0"></script>
+  <style>
+  div{
+    height:1000
+  }
+  </style></head><body style="text-align:center"><p class="text" style="color:white"></p><div><audio class="music" autoplay></audio><button class="b" type="button" onclick="f()">点我试听</button></div>  <script>
+star();
+$(".text").html("你很熟悉的一首纯音乐，<br>它陪了你三年，<br>也许你曾经不喜欢它，<br>甚至讨厌它，<br>但它还是想让你再听一次，<br>让你记住你的青春！");
+function f(){
+$(".music").attr({"src":"/CM.mp3"});
+$(".b").text("再点一下试试");
+$(".b").attr({"onclick":"s()"});
+}
+function s(){
+$(".music").attr({"src":"https://music.163.com/song/media/outer/url?id=417596496.mp3"});
+$(".text").html("一首《我的怀集中学》送给大家，谢谢！<br><br><br><br>作曲 : 唐理林<br>作词 : 唐理林<br>《我的怀集中学》<br>那时候我不懂什么是梦想<br>常常迷茫   在现实中彷徨<br>直到来到怀中这个好地方<br>慢慢学会坚强 有了自己的方向<br>饭堂     走廊<br>依稀看到我们的梦想<br>我知道为过去留恋是一种奢望<br>但我还是愿意为母校高歌一唱<br>虽然最后考试让我们四面聚散<br>但最后还是要用实力登场<br>像我 像他也一样<br>有付出就有希望<br>上帝不会眷顾你的努力<br>就像我多年后还依然爱着你<br>只要努力就会有奇迹<br>多年后你就开始明白这个道理<br>那时候我不懂什么是梦想<br>常常迷茫   在现实中彷徨<br>直到来到怀中这个好地方<br><br><br><br>");
+$(".b").hide();
+}
+  </script></body></html>
