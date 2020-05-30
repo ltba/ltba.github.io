@@ -25,6 +25,7 @@ function player(){
     listFolded:true,//列表默认折叠
     audio:suibianqugeming
     });
+    //mic.getcookie();切换页面连续播放
 }
 function getwy(id,index){
       fetch("https://api.i-meto.com/meting/api?server=netease&type=playlist&id="+id)
