@@ -1264,13 +1264,6 @@
                 "lrc": "[id:$0129EFC6]------[ar:arkady sevidov]------[ti:June]------[by:]------[hash:4399c9872c7235b60b58ce88dc487897]------[al:]------[sign:]------[qq:]------[total:320317]------[offset:0]------[00:01.58]纯音乐，请欣赏"
             },
             {
-                "name": "Canon In D Major",
-                "artist": "纯音乐",
-                "url": "https://xiani.toubiec.cn/api/micUrl?songId=660A2C1D669BF1CDB15E68CB0C00A66E&type=kg",
-                "cover": "https://p3fx.kgimg.com/uploadpic/softhead/150/20130531/20130531162457903.jpg",
-                "lrc": "[id:$00000000]------[ar:arkady sevidov]------[ti:June]------[by:]------[hash:4399c9872c7235b60b58ce88dc487897]------[al:]------[sign:]------[qq:]------[total:320317]------[offset:0]------[00:01.58]纯音乐，请欣赏"
-            },
-            {
                 "name": "My Soul",
                 "artist": "July",
                 "url": "https://xiani.toubiec.cn/api/micUrl?songId=88E75B178982F4F73116B0A0D627B78D&type=kg",
@@ -1351,6 +1344,20 @@
                 "name": "天空之城",
                 "artist": "纯音乐",
                 "url": "https://xiani.toubiec.cn/api/micUrl?songId=F716D6F245A1B1DD7A7059328AA3D312&type=kg",
+                "cover": "https://p3fx.kgimg.com/uploadpic/softhead/150/20130531/20130531162457903.jpg",
+                "lrc": "[id:$00000000]------[ar:arkady sevidov]------[ti:June]------[by:]------[hash:4399c9872c7235b60b58ce88dc487897]------[al:]------[sign:]------[qq:]------[total:320317]------[offset:0]------[00:01.58]纯音乐，请欣赏"
+            },
+            {
+                "name": "Я знаю твой телефон но никогда не позвоню",
+                "artist": "Tanin Jazz",
+                "url": "https://xiani.toubiec.cn/api/micUrl?songId=00378EY90pOsMV&type=qq",
+                "cover": "https://y.gtimg.cn/music/photo_new/T002R300x300M000001ZaCQY2OxVMg.jpg?max_age=2592000",
+                "lrc": ""
+            },
+            {
+                "name": "Canon In D Major",
+                "artist": "纯音乐",
+                "url": "https://xiani.toubiec.cn/api/micUrl?songId=660A2C1D669BF1CDB15E68CB0C00A66E&type=kg",
                 "cover": "https://p3fx.kgimg.com/uploadpic/softhead/150/20130531/20130531162457903.jpg",
                 "lrc": "[id:$00000000]------[ar:arkady sevidov]------[ti:June]------[by:]------[hash:4399c9872c7235b60b58ce88dc487897]------[al:]------[sign:]------[qq:]------[total:320317]------[offset:0]------[00:01.58]纯音乐，请欣赏"
             },
