@@ -204,6 +204,12 @@ $(function() {
 	w.load("<li class='writecode'>但愿老死电脑间，不愿鞠躬老板前</li>");
 	w.load("<li class='writecode'>奔驰宝马贵者趣，公交自行程序员</li>");
 	w.load("</ul>");
+    w.load("<h2 class='writecode'>补充</h2>");
+    w.load("<li class='writecode'>本人擅长Ai、Fw、Fl、Br、 Ae、Pr、Id、Ps等软件的安装与卸载，</li>");
+	w.load("<li class='writecode'>精通 CSS、JavaScript、PHP、ASP、C、C＋＋、 C#、Java、Ruby、Perl、</li>");
+	w.load("<li class='writecode'>Lisp、python、等单词拼 写，熟悉Windows、Linux、Mac、 Android、IOS等系统的开关机</li>");
+	w.load("</ul>");
+     
 	c.load("<p><div class='comment writecode'>/**</div>");
 	c.load("<div class='comment writecode'>&nbsp;*左面的简历看起来不是太令人满意，让我们先给他来点动态渲染</div>");
 	c.load("<div class='comment writecode'>&nbsp;*/</div></p>");
