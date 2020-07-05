@@ -15,6 +15,7 @@
     #upanddown{display:inline}
     </style></head><body><div class='main'><textarea id='end'></textarea><br><button type='button' onclick='end=JSON.parse($("#end").val());refresh()'>保存</button><button type='button' onclick='lrc_to_str()'>lrc转文本</button><div id='search_mode'><input type='radio' name='song_mode' value='0'>网易云</input><input type='radio' checked name='song_mode' value='1'>QQ音乐</input><input type='radio' name='song_mode' value='2'>酷狗</input></div><div id='upanddown'><input type='radio' name='upanddown' value='0'>添加到顶部</input><input type='radio' name='upanddown' checked value='1'>添加到底部</input></div><br><button type='button' onclick='导入()'>导入</button><button type='button' onclick='new_song_sheet()'>新建歌单</button>搜索:<input type='text' id='search'><button type='button' onclick='search()'>开始搜索</button><button type='button' onclick='$("#search_list").html("")'>清空搜索</button><ol id='search_list'></ol>name:<input type='text' id='name'><br>artist:<input type='text' id='artist'><br>url:<input type='text' id='url'><br>pic:<input type='text' id='pic'><br>lrc:<input type='text' id='lrc'><br><button type='button' onclick='addsong($("#name").val(),$("#artist").val(),$("#url").val(),$("#lrc").val(),$("#pic").val())'>添加歌曲</button></div><div id='song_sheet'></div><div id='TPlayer'></div><script>
 end=[];
+document.getElementById("search").onkeydown=(ev)=>{if(ev.keyCode==13)search()};
 function new_song_sheet(){
     var name = prompt("请输入name"),author = prompt("请输入author");
     end.push({name:name,author:author,content:[]});
