@@ -1,4 +1,9 @@
-<!DOCTYPE html><html><head><title>大鱼吃小鱼</title><meta charset='UTF-8'><script src="/lib/jquery/index.js?v=2.1.3"></script>
+<!DOCTYPE html>
+<html>
+<head>
+<title>大鱼吃小鱼</title>
+<meta charset='UTF-8'>
+<script src="/lib/jquery/index.js?v=2.1.3"></script>
 <style>
 body{
     text-align:center;
@@ -15,9 +20,16 @@ img{
     right:30px;
     bottom:30px;
     }
-</style></head><body><div class='game'></div><div class='light'><img src='../../img/all/lon.png' id='lamp' onclick='changeImage()'></div><script>
+</style>
+</head>
+<body>
+<div class='game'>
+</div>
+<div class='light'><img src='../../img/all/lon.png' id='lamp' onclick='changeImage()'></div>
+<script>
 $('.game').html('<object width="800px" height="600px" data="%E5%A4%A7%E9%B1%BC%E5%90%83%E5%B0%8F%E9%B1%BC.swf"></object>')
-</script><script>
+</script>
+<script>
 function changeImage()
 {
   document.body.className = document.body.className != "cls" ? "cls" : "";
@@ -28,4 +40,6 @@ function changeImage()
   else{
     element.src="../../img/all/lon.png"; }
 }
-</script></body></html>
+</script>
+</body>
+</html>

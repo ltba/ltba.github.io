@@ -1,6 +1,28 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>虾漫post生成</title>  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>虾漫post生成</title>
+  <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/clipboard.js/2.0.4/clipboard.min.js"></script>
-</head><body>  搜索：<input type='text' id='搜索' value='搜索内容'><button type='button' onclick='f("搜索")'>生成</button><br>  章节：<input type='text' id='章节' value='章节ID'><button type='button' onclick='f("章节")'>生成</button><br>  内容：<input type='text' id='内容' value='内容ID'><button type='button' onclick='f("内容")'>生成</button><br>  如果显示重新登录就加上这个&#38;params%5Busername%5D=cai471600373&#38;params%5Btoken%5D=1019061b7d93eddf48217dc9931c7f299e62<br>  分类：<input type='text' id='分类' value='无视此框'><button type='button' onclick='f("分类")'>生成</button><br>  类型：<input type='text' id='类型' value='类型ID'><button type='button' onclick='f("类型")'>生成</button><br>  畅销：<input type='text' id='畅销' value='无视此框'><button type='button' onclick='f("畅销")'>生成</button><br>  我的收藏：<input type='text' id='我的收藏' value='无视此框'><button type='button' onclick='f("我的收藏")'>生成</button><br>    <p id='ct'>显示生成内容</p>  <button id="btn" data-clipboard-text='.ct'>点击复制</button>  <br><br><br><br><br><br>  iframe框架：网址:<input type='text' id='url'><button type='button' onclick='j()'>跳转</button>  <input type='text' id='height'><button type='button' onclick='ch()'>改高</button>  <iframe width='100%' height='auto' id='iframe'></iframe><script type="text/javascript">
+</head>
+<body>
+  搜索：<input type='text' id='搜索' value='搜索内容'><button type='button' onclick='f("搜索")'>生成</button><br>
+  章节：<input type='text' id='章节' value='章节ID'><button type='button' onclick='f("章节")'>生成</button><br>
+  内容：<input type='text' id='内容' value='内容ID'><button type='button' onclick='f("内容")'>生成</button><br>
+  如果显示重新登录就加上这个&#38;params%5Busername%5D=cai471600373&#38;params%5Btoken%5D=1019061b7d93eddf48217dc9931c7f299e62<br>
+  分类：<input type='text' id='分类' value='无视此框'><button type='button' onclick='f("分类")'>生成</button><br>
+  类型：<input type='text' id='类型' value='类型ID'><button type='button' onclick='f("类型")'>生成</button><br>
+  畅销：<input type='text' id='畅销' value='无视此框'><button type='button' onclick='f("畅销")'>生成</button><br>
+  我的收藏：<input type='text' id='我的收藏' value='无视此框'><button type='button' onclick='f("我的收藏")'>生成</button><br>
+  
+  <p id='ct'>显示生成内容</p>
+  <button id="btn" data-clipboard-text='.ct'>点击复制</button>
+  <br><br><br><br><br><br>
+  iframe框架：网址:<input type='text' id='url'><button type='button' onclick='j()'>跳转</button>
+  <input type='text' id='height'><button type='button' onclick='ch()'>改高</button>
+  <iframe width='100%' height='auto' id='iframe'></iframe>
+<script type="text/javascript">
     window.onbeforeunload = function(){
         return false; // This will stop the redirecting.
     }
@@ -44,4 +66,6 @@
     clipboard.on('error', function(e) {
     alert('复制失败！');
     });
-</script> </body></html>
+</script> 
+</body>
+</html>

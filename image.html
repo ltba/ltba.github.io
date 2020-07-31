@@ -1,4 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>image——聆听·彼岸</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="referrer" content="same-origin"><meta name="referrer" content="no-referrer"><link rel="apple-touch-icon" sizes="180x180" href="/images/ico.jpg?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/ico.jpg?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/ico.jpg?v=5.1.4"><style>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>image——聆听·彼岸</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="same-origin">
+<meta name="referrer" content="no-referrer">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/ico.jpg?v=5.1.4">
+<style>
 #codes{
     width:100%;
 }
@@ -11,9 +22,28 @@
 }
 img{margin:0 auto;}
 body{background-color:black;color:white}
-</style><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</style>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
-</head><body><h1>批量图片预览</h1><br>作者: <a href="https://yked.gitee.io">聆听·彼岸</a><br>Blog: <a href="https://yked.gitee.io">https://yked.gitee.io</a><br>使用方法每个链接之间用\n隔开，比如：<br>http://wx1.sinaimg.cn/crop.0.0.920.300/6b084396gy1fmrtmsz3m5j20pk08cqe3.jpg<br>https://wxt.sinaimg.cn/large/6b084396gy1g0yy2m8rkfj21i8106nj8.jpg<br>https://wx1.sinaimg.cn/large/6b084396gy1g0yy2qqwn6j21061i81kx.jpg<br>https://wx2.sinaimg.cn/mw690/67a2f6d6ly1fz7i69j5hoj21121jkdva.jpg<br>https://wx3.sinaimg.cn/mw690/6b084396gy1fz0jbstqlmj20u0140af5.jpg<br>https://wx1.sinaimg.cn/large/6b084396gy1fz0jbw4nhxj20u0140gqe.jpg<br>http://wx3.sinaimg.cn/mw690/6285c8e0ly1fknhw5c7irg20900g0u0z.gif<br><textarea id="codes" rows="10"></textarea><br>每<input type='number' value='1' id='s'>秒<button type='button' onclick='three(0)'>打开</button>一张图片<button type="button" onclick="clear()">清空输入</button><button type="button" onclick="clean()">清空图片</button><button type="button" onclick="zero()">瞬开</button><br><br><input type='file' id='txtfile' accept=".txt" onchange='settxtPreview()'><input type='file' id='imgfile' accept="image/gif,image/jpeg,image/jpg,image/png" onchange='setimgPreview()'><input type='file' id='folderfile' multiple webkitdirectory onchange='setfolderPreview()'><br><div class="content"></div><script>
+</head>
+<body>
+<h1>批量图片预览</h1><br>
+作者: <a href="https://yked.gitee.io">聆听·彼岸</a><br>
+Blog: <a href="https://yked.gitee.io">https://yked.gitee.io</a><br>
+使用方法每个链接之间用\n隔开，
+比如：<br>
+http://wx1.sinaimg.cn/crop.0.0.920.300/6b084396gy1fmrtmsz3m5j20pk08cqe3.jpg<br>
+https://wxt.sinaimg.cn/large/6b084396gy1g0yy2m8rkfj21i8106nj8.jpg<br>
+https://wx1.sinaimg.cn/large/6b084396gy1g0yy2qqwn6j21061i81kx.jpg<br>
+https://wx2.sinaimg.cn/mw690/67a2f6d6ly1fz7i69j5hoj21121jkdva.jpg<br>
+https://wx3.sinaimg.cn/mw690/6b084396gy1fz0jbstqlmj20u0140af5.jpg<br>
+https://wx1.sinaimg.cn/large/6b084396gy1fz0jbw4nhxj20u0140gqe.jpg<br>
+http://wx3.sinaimg.cn/mw690/6285c8e0ly1fknhw5c7irg20900g0u0z.gif<br>
+<textarea id="codes" rows="10"></textarea><br>
+每<input type='number' value='1' id='s'>秒<button type='button' onclick='three(0)'>打开</button>一张图片<button type="button" onclick="clear()">清空输入</button><button type="button" onclick="clean()">清空图片</button><button type="button" onclick="zero()">瞬开</button><br><br><input type='file' id='txtfile' accept=".txt" onchange='settxtPreview()'><input type='file' id='imgfile' accept="image/gif,image/jpeg,image/jpg,image/png" onchange='setimgPreview()'><input type='file' id='folderfile' multiple webkitdirectory onchange='setfolderPreview()'><br>
+<div class="content">
+</div>
+<script>
 function three(n){
     var b = $("#codes").val();
     var a = b.split("\n");
@@ -102,4 +132,6 @@ var hman=()=>{
     addpic(pic);
 };
 document.getElementsByTagName("h1")[0].onclick=hman;
-</script></body></html>
+</script>
+</body>
+</html>

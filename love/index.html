@@ -1,4 +1,13 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>LOVE——聆听·彼岸</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/ico.jpg?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/ico.jpg?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/ico.jpg?v=5.1.4"><script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LOVE——聆听·彼岸</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/ico.jpg?v=5.1.4">
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <style>
 .top{
 font-family: 'Microsoft YaHei';
@@ -31,4 +40,34 @@ img{
 .love.story{
     margin: 0 auto;
 }
-</style></head><body><audio autoplay src="dkx.mp3"></audio><p class="top">LOVE STORY</p><div class="box"><div class="love story"><a class="storya" href="story"><img src="story.jpg" /><br><p class="storytext">小红和小明的爱情故事</p></a>我也要：<br>男: <input type="text" class="storyboy"><br>女: <input type="text" class="storygirl"><br>mp3: <input type="text" class="storymp3"><br><button type="button" onclick="$('.storya').attr({'href':'story/index.html?boy='+$('.storyboy').val()+'&girl='+$('.storygirl').val()+'&mp3='+$('.storymp3').val()});$('.storytext').html($('.storyboy').val()+'和'+$('.storygirl').val()+'的爱情故事')">生成</button></div><div class="donghua"><a class="donghuaa" href="donghua"><img src="donghua.jpg" /><br><p class="donghuatext">爱情动画</p></a>我也要：<br>文字: <input type="text" class="donghuatxt"><br><button type="button" onclick="$('.donghuaa').attr({'href':'donghua?text='+$('.donghuatxt').val()});$('.donghuatext').html('生成成功！')">生成</button></div><footer>Copyright © <a href="https://yked.gitee.io">聆听·彼岸</a></footer></body></html>
+</style>
+</head>
+<body>
+<audio autoplay src="dkx.mp3">
+</audio>
+<p class="top">LOVE STORY</p>
+<div class="box">
+<div class="love story">
+<a class="storya" href="story">
+<img src="story.jpg" /><br>
+<p class="storytext">小红和小明的爱情故事</p></a>
+我也要：<br>
+男: <input type="text" class="storyboy"><br>
+女: <input type="text" class="storygirl"><br>
+mp3: <input type="text" class="storymp3"><br>
+<button type="button" onclick="$('.storya').attr({'href':'story/index.html?boy='+$('.storyboy').val()+'&girl='+$('.storygirl').val()+'&mp3='+$('.storymp3').val()});$('.storytext').html($('.storyboy').val()+'和'+$('.storygirl').val()+'的爱情故事')">生成</button>
+
+</div>
+<div class="donghua">
+<a class="donghuaa" href="donghua">
+<img src="donghua.jpg" /><br>
+<p class="donghuatext">爱情动画</p></a>
+我也要：<br>
+文字: <input type="text" class="donghuatxt"><br>
+<button type="button" onclick="$('.donghuaa').attr({'href':'donghua?text='+$('.donghuatxt').val()});$('.donghuatext').html('生成成功！')">生成</button>
+</div>
+<footer>
+Copyright © <a href="https://yked.gitee.io">聆听·彼岸</a>
+</footer>
+</body>
+</html>

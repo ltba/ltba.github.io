@@ -1,4 +1,22 @@
-<!DOCTYPE html><html lang='zh-cn'><head>	<meta charset='UTF-8'>	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">	<title>四合一图床上传 - Cdn图床,百度图床,新浪图床,360图床,搜狗图床</title>	<link rel="icon" href="favicon.ico" type="image/x-icon">    <meta name="keywords" content="水瓶座,地盘,music,炫酷">    <meta name="description" content="水瓶座,水瓶座的地盘,水瓶座的地盘水瓶座做主,music,炫酷">    <meta name="author" content="水瓶座">	<link rel='stylesheet' href='https://cdn.bootcss.com/normalize/5.0.0/normalize.min.css'>	<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
+<!-- 
+四合一图床上传，支持百度(2M)、搜狗(2M)、360(2M)、新浪(10M)图片上传
+作者：水瓶座
+
+略作修改
+声明：原作者Youngxj(杨小杰)，博客：https://www.youngxj.cn。
+-->
+<!DOCTYPE html>
+<html lang='zh-cn'>
+<head>
+	<meta charset='UTF-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<title>四合一图床上传 - Cdn图床,百度图床,新浪图床,360图床,搜狗图床</title>
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="keywords" content="水瓶座,地盘,music,炫酷">
+    <meta name="description" content="水瓶座,水瓶座的地盘,水瓶座的地盘水瓶座做主,music,炫酷">
+    <meta name="author" content="水瓶座">
+	<link rel='stylesheet' href='https://cdn.bootcss.com/normalize/5.0.0/normalize.min.css'>
+	<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
 	<style>
 	html,body {height: 100%;margin: 0;padding: 0;}body {font-family: 'lucida grande', 'lucida sans unicode', lucida, helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;align-items: center;display: flex;}a{text-decoration:none;}#container {max-width: 400px;flex-basis: 100%;margin: 0 auto;background: #FFF;border-radius: 10px;box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);-webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);overflow: hidden;}#container #hero-img {width: 100%;height: 200px;background: #007bff;}#container #profile-img {width: 160px;height: 160px;margin: -80px auto 0 auto;}#container #profile-img img {width: 100%;background: #FFF;border-radius: 50%;}#container #content {text-align: center;width: 320px;margin: 0 auto;padding: 0 0 50px 0;}#container #content h1 {font-size: 29px;font-weight: 500;margin: 30px 0 0 0;}#container #content p {font-size: 18px;font-weight: 400;line-height: 1.4;color: #666;margin: 15px 0 40px 0;}#container #content a {color: #CCC;font-size: 14px;margin: 0 10px;transition: color .3s ease-in-out;-webkit-transition: color .3s ease-in-out;line-height: 40px;}#container #content a:hover {color: #007bff;}.btn{background: none repeat scroll 0 0 #1BA1E2; border: 0 none; border-radius: 2px; color: #FFFFFF !important; cursor: pointer; font-family: "Open Sans","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Verdana,Tahoma,sans-serif; font-size: 14px;  padding: 6px 10%;}.btn:hover,.yanshibtn:hover{background: none repeat scroll 0 0 #9B59B6; border: 0 none; border-radius: 2px; color: #FFFFFF!important; cursor: pointer; font-family: "Open Sans","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",Arial,Verdana,Tahoma,sans-serif; font-size: 14px; padding: 8px 10%;}
 	.imgType{display: none;}
@@ -20,7 +38,45 @@
 	}
 
 	.img{border-radius: 250px;}
-</style></head><body>	<div id='container'>		<div id='hero-img'>		</div>		<div id='profile-img'>			<img src='https://ww2.sinaimg.cn/large/005BYqpggy1fxbboztih4j305k05kwef.jpg' id="imgLoading" class="Rotation img" title="显示与隐藏"/>		</div>		<div id='content'>			<h2>四合一图床上传</h2>			<h5>				百度图床-新浪图床-搜狗图床-360图床			</h5>			<div id="progress"><progress max="100" value="0" id="pg"></progress></div>			<p class="imgType" id="imgType"></p>			<form id="form1">				<a href='javascript:void(0)' id="baiduImg" onclick="update('baidu')" class="btn btn-default" rel='nofollow'>百度图床</a><a href='javascript:void(0)' id="SinaImg" onclick="update('sina')" class="btn btn-default" rel='nofollow'>新浪图床</a>				<a href='javascript:void(0)' id="sougouImg" onclick="update('sougou')" class="btn btn-default" rel='nofollow'>搜狗图床</a><a href='javascript:void(0)' id="soImg" onclick="update('so')" class="btn btn-default" rel='nofollow'>360 图床</a>				<input type="file" id="file" name="file" onchange="sc($('#imgType').attr('imgType'));" style="display:none" accept="image/*">			</form>			<div class="imgContent" id="imgContent">				<div id="images"></div>				<div id="imgurl">					<code>ImgUrl:</code>					<input onclick="oCopy(this)" value=""  id="Imgs_url">					<code>HtmlUrl:</code>					<input onclick="oCopy(this)" value=""  id="Imgs_html">					<code>Ubb:</code>					<input onclick="oCopy(this)" value=""  id="Imgs_Ubb">					<code>Markdown:</code>					<input onclick="oCopy(this)" value=""  id="Imgs_markdown">				</div>			</div>		</div>	</div></body><script type="text/javascript">
+</style>
+</head>
+<body>
+	<div id='container'>
+		<div id='hero-img'>
+		</div>
+		<div id='profile-img'>
+			<img src='https://ww2.sinaimg.cn/large/005BYqpggy1fxbboztih4j305k05kwef.jpg' id="imgLoading" class="Rotation img" title="显示与隐藏"/>
+		</div>
+		<div id='content'>
+			<h2>四合一图床上传</h2>
+			<h5>
+				百度图床-新浪图床-搜狗图床-360图床
+			</h5>
+			<div id="progress"><progress max="100" value="0" id="pg"></progress></div>
+			<p class="imgType" id="imgType"></p>
+			<form id="form1">
+				<a href='javascript:void(0)' id="baiduImg" onclick="update('baidu')" class="btn btn-default" rel='nofollow'>百度图床</a><a href='javascript:void(0)' id="SinaImg" onclick="update('sina')" class="btn btn-default" rel='nofollow'>新浪图床</a>
+				<a href='javascript:void(0)' id="sougouImg" onclick="update('sougou')" class="btn btn-default" rel='nofollow'>搜狗图床</a><a href='javascript:void(0)' id="soImg" onclick="update('so')" class="btn btn-default" rel='nofollow'>360 图床</a>
+				<input type="file" id="file" name="file" onchange="sc($('#imgType').attr('imgType'));" style="display:none" accept="image/*">
+			</form>
+			<div class="imgContent" id="imgContent">
+				<div id="images"></div>
+				<div id="imgurl">
+					<code>ImgUrl:</code>
+					<input onclick="oCopy(this)" value=""  id="Imgs_url">
+					<code>HtmlUrl:</code>
+					<input onclick="oCopy(this)" value=""  id="Imgs_html">
+					<code>Ubb:</code>
+					<input onclick="oCopy(this)" value=""  id="Imgs_Ubb">
+					<code>Markdown:</code>
+					<input onclick="oCopy(this)" value=""  id="Imgs_markdown">
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
 
 
  function update(type){
@@ -155,4 +211,5 @@
  $(document).ready(function(){
  	$('#imgLoading').click(function() {$("#imgContent").toggle();});
  });
-</script></html>
+</script>
+</html>
