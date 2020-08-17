@@ -5,7 +5,7 @@ fetch("/music/songs.json")
   .then(songs => {
     console.log("歌单请求完毕！");
     suibianqugeming=songs;
-    [suibianqugeming[0],suibianqugeming[5]]=[suibianqugeming[5],suibianqugeming[0]];
+    //[suibianqugeming[0],suibianqugeming[5]]=[suibianqugeming[5],suibianqugeming[0]];
     getwy('3778678',suibianqugeming.length-1);
   })
   .catch(err => console.log('请求出错，或您的浏览器不支持，请使用Chrome内核的浏览器！'));
