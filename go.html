@@ -56,6 +56,11 @@ body{
 </div>
 <script>
 var ls = location.search;
+var ref = document.referrer;
+if (ref.indexOf("yked.gitee.io")==-1){
+    location.href="https://yked.gitee.io";
+}
+
 if (ls.substring(0,5) == "?url="){
     var url = ls.substring(5);
     var content = document.getElementById("content");
