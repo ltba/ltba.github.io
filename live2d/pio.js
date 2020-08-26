@@ -162,7 +162,7 @@ var Paul_Pio = function (prop) {
             
             //一言
             elements.hitokoto.onclick = function () {
-                fetch('https://v1.hitokoto.cn')
+                fetch('https://v1.hitokoto.cn/?c=a&c=d&c=f&c=i')
                 .then(response => response.json())
                 .then(data => {
                   modules.render(data.hitokoto);
