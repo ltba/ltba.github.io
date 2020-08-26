@@ -52,7 +52,7 @@ var Paul_Pio = function (prop) {
             clearTimeout(this.t);
             this.t = setTimeout(function () {
                 dialog.classList.remove("active");
-            }, 3000);
+            }, 7000);
         },
         // 移除方法
         destroy: function () {
@@ -64,6 +64,7 @@ var Paul_Pio = function (prop) {
     var elements = {
         home: modules.create("span", {class: "pio-home"}),
         reader: modules.create("span", {class: "pio-reader"}),
+        hitokoto: modules.create("span", {class: "pio-hitokoto"}),
         firework: modules.create("span", {class: "pio-firework"}),
         skin: modules.create("span", {class: "pio-skin"}),
         info: modules.create("span", {class: "pio-info"}),
@@ -148,27 +149,30 @@ var Paul_Pio = function (prop) {
             };
             current.menu.appendChild(elements.home);
             
-            //语音读文章
+            //语音
             elements.reader.onclick = function () {
-                TL=document.getElementById('posts').innerText.replace(/\s+/g,"").split("。");
-                for(let n=0;n<TL.length;n++){
-                    if(!TL[n]){TL.splice(n,1);--n;}
-                }
-                for(var i=0;i<TL.length;i++){
-                    let a=document.createElement('AUDIO');
-                    a.src='https://ai.baidu.com/aidemo?type=tns&spd=4&pit=5&vol=5&per=4&tex='+encodeURIComponent(TL[i])+'&dt=1';
-                    a.onended = function(){
-                        try{if(i<TL.length){TL[i].play();i++;}else{i=0}}
-                        catch{if(i<TL.length){TL[i].play();i++;}else{i=0}}
-                        };
-                    TL[i]=a;
-                }
-                i=0;TL[i].play();i++;
+                let a=document.createElement('AUDIO');
+                a.src='https://ai.baidu.com/aidemo?type=tns&spd=4&pit=5&vol=5&per=4&tex='+encodeURIComponent(document.getElementsByClassName("pio-dialog")[0].innerText)+'&dt=1';
+                a.autoplay=true;
             };
             elements.reader.onmouseover = function () {
-                modules.render("要我帮你读吗？");
+                //modules.render("要我帮你读吗？");
             };
             current.menu.appendChild(elements.reader);
+            
+            //一言
+            elements.hitokoto.onclick = function () {
+                fetch('https://v1.hitokoto.cn')
+                .then(response => response.json())
+                .then(data => {
+                  modules.render(data.hitokoto);
+                })
+                .catch(console.error)
+            };
+            elements.hitokoto.onmouseover = function () {
+                modules.render("一言");
+            };
+            current.menu.appendChild(elements.hitokoto);
             
             //放烟花
             elements.firework.onclick = function () {
