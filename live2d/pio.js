@@ -170,7 +170,7 @@ var Paul_Pio = function (prop) {
                 .catch(console.error)
             };
             elements.hitokoto.onmouseover = function () {
-                modules.render("一言");
+                modules.render("猜猜我要说什么？");
             };
             current.menu.appendChild(elements.hitokoto);
             
