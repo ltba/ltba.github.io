@@ -3,7 +3,7 @@
     alert("请先引用jQ");
 };
     mic={
-        "http":"https://isure.stream.qqmusic.qq.com/",//https://ws.stream.qqmusic.qq.com/
+        "http":"https://ws.stream.qqmusic.qq.com/",//https://isure.stream.qqmusic.qq.com/
         "api":"https://shenwu.net/music/api.php?types=url&id=",
         get:function(url,callback,name){
             $.ajax({
