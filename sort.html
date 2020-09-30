@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>排序——聆听·彼岸</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<textarea id="codes" rows="20" cols="100">1. context; 2.persistent; devoted; talented; critical; responsible; determined; hard-working; diligent; 3. Postgraduate 4.theory of evolution 5.pursue further study 6.intensive 7.impress 8.feedback 9.attendance 10.language points 11.dictation 12.address 13.pig 14.drive 15.snoring 16.cloze </textarea><br>
+<button onclick="f()">排序</button>
+<div id="view"></div>
+<script>
+var f = () => {
+    var str=document.getElementById("codes").value;
+	var n=str.match(/(?<=\d+\.)[\D]*(?!\D)/g);
+	for(var i=0;i<n.length;i++){
+		console.log(document.getElementById("view").innerHTML+="<br>"+(i+1)+"."+n[i])
+	}}
+</script>
+</body>
+</html>
