@@ -10,15 +10,208 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/images/ico.jpg?v=5.1.4">
 <link rel="icon" type="image/png" sizes="16x16" href="/images/ico.jpg?v=5.1.4">
 <style>
-
+a{color:rgba(102,204,255,1);}
+ol li{list-style:none}
+#header{
+    margin:0 auto;
+    width:60%;
+    text-align:center;
+    font-size:60px;
+    color:rgba(102,204,255,1);
+}
+#list{
+    width:20%;
+    display:inline-block;
+    position:fixed;
+    top:10%;
+    left:5%;
+}
+#main{
+    width:60%;
+    margin:0 auto;
+}
+div.friends,div.mysite{
+    width:90%;
+    margin:10px auto auto 50px;
+}
+#ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+}
+#ul li{
+    width: 22%;
+    float: left;
+    list-style: none;
+    border: 1px solid #b3b3b3;
+    padding: 10px 30px;
+    margin: 4px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+#ul a{
+    color: #e67474;
+    outline: none;
+    text-decoration: none;
+}
+#ul img{
+    float: right;
+    box-shadow: inset 0 0 10px #000;
+    padding: 5px;
+    opacity: 1;
+    margin-top: 5px;
+    width: 65px;
+    height: 65px;
+    padding: 2px;
+    border-radius: 100%;
+}
+#ul span{
+    color: rgba(102,204,255,1);
+    padding-bottom: 10px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#ul div{
+    color: #949494;
+    font-size: 13px;
+    padding: 10px 0;
+    border-top: 1px dashed #ddd;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 25px;
+}
+@media screen and (max-width: 830px){
+    #ul li{width:80%}
+    div.friends,div.mysite{margin:0}
+}
+/*内联>id>类>标签*/
 </style>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="https://yked.gitee.io/randomimg.js"></script>
+<script src="https://yked.gitee.io/background.js"></script>
 </head>
 <body>
-
+<div id="list"><ol></ol></div>
+<div id="header">聆听·彼岸的导航</div>
+<div id="main"></div>
 <script>
-
+gradients("linear-gradient(141deg,#ffffcc 0%,#ffff99 51%,#ffff66 75%)");
+var img="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=386535230,3956809074&fm=26&gp=0.jpg";
+var urls={//分类
+    "工具":[
+    {"name":"在线工具 - 程序员的工具箱","img":"https://tool.lu/favicon.ico","description":"在线工具 - 程序员的工具箱","url":"https://tool.lu/"},
+    {"name":"MikuTools","img":"https://cdn.jsdelivr.net/gh/Ice-Hazymoon/mikutools-website/icons/icon_512.ec0a61.png","description":"域名发布站:https://github.com/Ice-Hazymoon/domains","url":"https://tools.miku.ac"},
+    {"name":"电脑录屏工具","img":"https://cdn.jsdelivr.net/gh/Ice-Hazymoon/mikutools-website/icons/icon_512.ec0a61.png","description":"电脑录屏工具 - MikuTools","url":"https://tools.miku.ac/screen_record/"},
+    {"name":"菜鸟工具","img":"https://c.runoob.com/favicon.ico","description":"菜鸟工具 - 不止于工具","url":"https://c.runoob.com/"},
+    {"name":"JS压缩","img":"https://cdn.css-js.com/20170311/icon64.png","description":"JS压缩","url":"https://www.css-js.com/"},
+    {"name":"图片在线转换Base64","img":"https://cdn.css-js.com/20170311/icon64.png","description":"图片在线转换Base64","url":"https://www.css-js.com/tools/base64.html"},
+    {"name":"JS不可逆加密","img":"https://cdn.yinshua86.com/sojson/favicon48.png","description":"JS加密，JS高级加密，JS不可逆加密，JavaScript加密—在线加密","url":"https://www.sojson.com/javascriptobfuscator.html"},
+    {"name":"斗图工具箱","img":"https://www.52doutu.cn/static/images/others/touch-icon.png","description":"一些实用的在线图片处理工具","url":"https://www.52doutu.cn/tools/"}
+    ],
+    "临时网盘":[
+    {"name":"AirPortal | 空投","img":"https://cdn.jsdelivr.net/gh/shangzhenyang/assets/img/ap-apple-touch-icon-2.png","description":"随时随地跨设备传输文件。","url":"https://airportal.cn/"},
+    {"name":"奶牛快传","img":"https://background.cowtransfer.com/apple-icon-144x144.png","description":"奶牛快传","url":"https://cowtransfer.com/"},
+    {"name":"可道云","img":"http://demo.kodcloud.com/static/images/icon/fav.png?v=1.13.1001","description":"可道云","url":"http://demo.kodcloud.com/"},
+    {"name":"文叔叔","img":"https://www.wenshushu.cn/favicon.ico","description":"文叔叔","url":"https://www.wenshushu.cn/"},
+    {"name":"PanDownload老传版","img":"https://imwcr.cn/api/bdwp/resource/favicon.ico","description":"PanDownload老传版","url":"http://laochuan520.cn/pan/"},
+    {"name":"PanDownload 复刻版","img":"https://imwcr.cn/api/bdwp/resource/favicon.ico","description":"PanDownload 复刻版","url":"https://imwcr.cn/api/bdwp/"},
+    {"name":"BDD度盘高速地址获取","img":"https://imwcr.cn/api/bdwp/resource/favicon.ico","description":"BDD度盘高速地址获取","url":"https://bdd.fzxx.xyz/"}
+    ],
+    "音乐":[
+    {"name":"MYFREEMP3","img":"http://tool.liumingye.cn/favicon.ico","description":"免费音乐下载","url":"http://tool.liumingye.cn/music/?page=homePage"},
+    {"name":"SQ688","img":"https://www.sq688.com/favicon.ico","description":"无损音乐","url":"https://www.sq688.com/"},
+    {"name":"MKOnlinePlayer","img":"http://tools.aeink.com/tools/music/favicon.ico","description":"伪孟坤","url":"http://tools.aeink.com/tools/music/"},
+    {"name":"MKOnlinePlayer","img":"http://tools.aeink.com/tools/music/favicon.ico","description":"伪孟坤","url":"https://shenwu.net/music/"},
+    {"name":"MKOnlinePlayer","img":"http://tools.aeink.com/tools/music/favicon.ico","description":"伪孟坤","url":"http://xvss.cn/"},
+    {"name":"MKOnlinePlayer","img":"http://tools.aeink.com/tools/music/favicon.ico","description":"伪孟坤","url":"http://cietv.com/music/"},
+    {"name":"MKOnlinePlayer","img":"http://tools.aeink.com/tools/music/favicon.ico","description":"伪孟坤","url":"http://s.cpman.cn/"},
+    {"name":"MKOnlinePlayer","img":"http://tools.aeink.com/tools/music/favicon.ico","description":"伪孟坤","url":"http://ting.yeyulingfeng.com/"},
+    {"name":"MKOnlinePlayer","img":"http://tools.aeink.com/tools/music/favicon.ico","description":"伪孟坤","url":"http://music.bobcoder.cc/"},
+    {"name":"MKOnlinePlayer","img":"http://tools.aeink.com/tools/music/favicon.ico","description":"伪孟坤","url":"https://xptt.com/i/yinyue/"},
+    {"name":"雨","img":"https://yinyue.qugeek.com/favicon.ico","description":"无","url":"https://yinyue.qugeek.com/app/onlyrain"},
+    {"name":"四季","img":"https://yinyue.qugeek.com/favicon.ico","description":"无","url":"https://yinyue.qugeek.com/app/rainyscope#slide-1"}
+    ],
+    "视频":[
+    {"name":"OK视频解析","img":"http://www.okjx.cc/jiekou/favicon.ico","description":"视频解析","url":"http://www.okjx.cc/jiekou/"},
+    {"name":"MyFreeMP4","img":"http://lab.liumingye.cn/template/stui_tpl/statics/icon/icon_12.png","description":"全网影片搜索","url":"http://lab.liumingye.cn/"},
+    {"name":"贝贝BiliBili","img":"https://xbeibeix.com/wp-content/uploads/2019/07/cropped-%E6%9C%AA%E5%91%BD%E5%90%8D_%E5%89%AF%E6%9C%AC-32x32.jpg","description":"B站视频下载","url":"https://xbeibeix.com/api/bilibili/"},
+    {"name":"微信影院","img":"https://www.weixintv8.com/template/pc/public/tpl/zpnew/images/logo.png","description":"免费看","url":"https://www.weixintv8.com/"}
+    ],
+    "图片":[
+    {"name":"阿珏图库","img":"https://www.52ecy.cn/content/templates/emlog_dux/favicon.ico","description":"二次元图库","url":"励志做最大的二次元在线图库"},
+    {"name":"绝对领域","img":img,"description":"动漫图片,动漫壁纸,动漫头像,动漫cosplay图片,二次元图片,动漫美少女","url":"https://www.jdlingyu.com/collection/acg"},
+    {"name":"FGHRSH 私家图床","img":"https://img.fghrsh.net/content/images/system/favicon_20160217061559.png","description":"动漫美少女","url":"https://img.fghrsh.net/category/acg/?list=images&sort=date_desc&page=7&seek=wctU1"},
+    {"name":"P站 | ACG17","img":"https://i.loli.net/2018/10/01/5bb2298aa36f2.png","description":"p站,p站美图","url":"http://acg17.com/tag/pixiv/"},
+    {"name":"PixivBox","img":"https://pixivbox.top/usr/themes/photograph/favicon.png","description":"p站美图","url":"https://pixivbox.top/"},
+    {"name":"Xinger Pixiv Collection","img":"https://acg.blue/wp-content/themes/H-Siren/images/favicon.ico","description":"pixiv收集","url":"https://acg.blue/"},
+    {"name":"Pixiv Illustration Collection","img":"https://pixivic.com/icon.png","description":"pixiv中国","url":"https://pixivic.com/"},
+    {"name":"电脑壁纸","img":img,"description":"孟坤在线壁纸提供高清电脑壁纸下载","url":"http://lab.mkblog.cn/wallpaper/"},
+    {"name":"哔哩哔哩相簿","img":"https://www.bilibili.com/favicon.ico","description":"绘你所想，拍你所爱","url":"https://h.bilibili.com/eden/picture_area#/cos/hot"},
+    {"name":"表情包套图","img":"https://www.52doutu.cn/favicon.ico","description":"斗图表情包","url":"https://www.52doutu.cn/post/"}
+    ],
+    "游戏":[
+    {"name":"聆听·彼岸的游戏","img":"https://yked.gitee.io/images/favicon.ico","description":"聆听·彼岸的游戏","url":"https://yked.gitee.io/games/"},
+    {"name":"小霸王","img":"https://www.yikm.net/f.png","description":"FC在线游戏","url":"https://www.yikm.net/"}
+    ],
+    "教程":[
+    {"name":"菜鸟教程","img":"https://static.runoob.com/images/favicon.ico","description":"编程的基础技术教程","url":"https://www.runoob.com/"}
+    ],
+    "临时杂货":[
+    {"name":"在线文档预览","img":"https://www.idocv.com/favicon.ico","description":"在线文档预览","url":"https://www.idocv.com/examples.html"},
+    {"name":"元素动画","img":img,"description":"元素动画","url":"https://www.hightopo.com/demo/elementTable/index.html"},
+    {"name":"免费字体下载","img":"https://www.zitijia.com/static/img/favicon.ico","description":"致力于打造免费、平价字体网","url":"https://www.zitijia.com/"},
+    {"name":"搏天api","img":"http://api.btstu.cn/favicon.ico","description":"免费api接口平台","url":"http://api.btstu.cn/"},
+    {"name":"自由钢琴","img":"https://www.autopiano.cn/favicon.ico","description":"在线弹钢琴，听钢琴曲，超好听，超好玩","url":"http://www.autopiano.cn/"}
+    ],
+    "临时联系":[
+    {"name":"免费云短信","img":"https://static.pdf-lib.org/sms_resouce/static/favicon.ico","description":"免费接码","url":"https://www.materialtools.com/"},
+    {"name":"免费云短信","img":"https://www.bfkdim.com/static/imgs/favicon.ico","description":"免费接码","url":"https://www.bfkdim.com/"},
+    {"name":"免费云短信","img":"https://yunduanxin.net/img/logo.png","description":"免费接码","url":"https://yunduanxin.net/"},
+    {"name":"免费云短信","img":"http://www.xnsms.com/favicon.ico","description":"免费接码","url":"http://www.xnsms.com/"},
+    {"name":"免费临时邮箱","img":"https://linshiyouxiang.net/public/zh-CN/img/favicon.ico?11","description":"临时邮箱","url":"https://linshiyouxiang.net/"},
+    {"name":"免费临时邮箱","img":"https://semantic-ui.com/examples/assets/images/logo.png","description":"临时邮箱","url":"http://www.5-mail.com/"},
+    {"name":"免费临时邮箱","img":img,"description":"临时邮箱","url":"https://10minutemail.net/"}
+    ],
+    "虚拟主机":[
+    {"name":"主机屋","img":"http://img2018.zhujiwu.com/zxh/img/favicon.ico","description":"虚拟主机-免费空间-免备案域名","url":"http://www.zhujiwu.com/"},
+    {"name":"三丰云","img":"https://img.sanfengyun.com/img/favicon.ico","description":"虚拟主机-免费空间-免备案域名","url":"https://www.sanfengyun.com/"},
+    {"name":"热铁盒虚拟主机","img":"https://cdn.jsdelivr.net/gh/shangzhenyang/assets/img/vhost.png","description":"直接开始","url":"https://host.retiehe.com/"},
+    {"name":"挂机宝--冰山互联","img":img,"description":"一个手机号一小时免费VPS","url":"http://www.e8088.com/index/product/try!novnc.action"}
+    ],
+    "镜像站":[
+    {"name":"华为开源镜像站","img":"https://mirrors.huaweicloud.com/favicon.ico","description":"镜像,镜像站,软件开发,编译构建,maven,npm,pypi,nuget,php,rubygem,sbt,操作系统","url":"https://mirrors.huaweicloud.com/"}
+    ],
+    "博客":[
+    {"name":"幻影博客","img":"https://blog.52hyjs.com/favicon.ico","description":"个人装逼分享窝点","url":"https://blog.52hyjs.com/"},
+    {"name":"苏安的小窝","img":"https://img.ipayy.net/2020/02/02/76bc2a9c1f96b.ico","description":"渴望并相信美好的事物会发生.","url":"https://www.ipayy.net/"},
+    {"name":"FengMo的博客","img":"https://cdn.jsdelivr.net/gh/fengmo66/img/images/mo66.cn/mo66.cn-Head-portrait.png","description":"风陌的博客","url":"https://mo66.cn/"},
+    {"name":"清酒踏月","img":"https://cdn.img.cos.lkxin.cn/logo/blog.png","description":"清酒踏月网络科技","url":"https://blog.lkxin.cn/"},
+    {"name":"姑的小屋","img":"https://cungudafa.top/images/favicon.ico","description":"姑的小屋","url":"https://cungudafa.top/"},
+    {"name":"萌卜兔","img":"https://racns.com/usr/images/favicon.ico","description":"萌卜兔博客,兔子博客","url":"https://racns.com/"},
+    {"name":"烟雨寒云","img":"https://dn-qiniu-avatar.qbox.me/avatar/bdd525c3fc55d07d1132dd15989a6d44?s=56&d=https%3A%2F%2Fwww.yyhy.me%2Fwp-content%2Fthemes%2FGiligili%2Fimg%2Fcomment-avatar.png&r=x","description":"烟雨寒云的个人小窝,记录生活","url":"https://www.yyhy.me/"},
+    {"name":"Perfare","img":img,"description":"解包大佬","url":"https://www.perfare.net/"},
+    {"name":"森七博客","img":"https://www.mosq.cn/favicon.ico","description":"个人博客","url":"https://www.mosq.cn/"},
+    {"name":"梦魇小栈","img":"https://blog.ihoey.com/images/icons/icon_32.png?v=6.2.0","description":"心，若没有栖息的地方，到哪里都是流浪......","url":"https://blog.ihoey.com/"},
+    {"name":"KirimaSharo's Blog","img":"https://kirimasharo.com/favicon.ico","description":"分享网络上好玩的东西","url":"https://kirimasharo.com/"}
+    ],
+    "锁":[]
+};
+for(let i in urls){
+    $("#main").append('<h3 id="'+i+'">'+i+'</h3>');
+    $("#list ol").append('<li><a href="#'+i+'" class="headerlink" title="'+i+'">'+i+'</a></li>');
+    $("#main").append("<div class='"+i+"'><ul id='ul' class='"+i+"'></ul></div>");
+    for(let n of urls[i]){
+        $('ul.'+i).append('<li><a target="_blank" href="'+n.url+'" title="'+n.description+'"><img src="'+n.img+'" width="60" height="60"><span>'+n.name+'</span><div>'+n.description+'</div></a></li>');
+    }
+}
 </script>
 </body>
 </html>

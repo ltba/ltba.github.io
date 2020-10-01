@@ -60,7 +60,7 @@ function cas(){//创建一个canvas标签,id为cas,class为cas
 function simple(){//使用随机图片作背景
     init();
     //$.getScript("/randomimg.js",function(){$(".background").css({"background-size":"cover","background-image":randomimg()})});
-    $(".background").css({//https://api.dujin.org/pic/,https://acg.toubiec.cn/random,https://wloli.com/wj/api/acg.php,https://api.ixiaowai.cn/api/api.php
+    $(".background").css({//https://api.dujin.org/pic/,https://acg.toubiec.cn/random,https://wloli.com/wj/api/acg.php,https://api.ixiaowai.cn/api/api.php,https://i.xinger.ink:4443/images.php
         "background-image":"url("+randomimg()+")",
         "background-size":"cover"
     });
