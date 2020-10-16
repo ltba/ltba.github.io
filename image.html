@@ -115,10 +115,21 @@ function addpic(dom){
 function clear(){
     $("#codes").val("");
 }
+var nTom=(num)=>{
+    switch(num.toString().length){
+        case 1:
+        return "00"+num;
+        case 2:
+        return "0"+num;
+        default:
+        return num;
+    }
+};
 var hman=()=>{
     var n = prompt("输入id");
     var pic=document.createElement("IMG");
     var num=1;
+    if(confirm("使用/n.jpg")){
     var hf="https://tu.52kkmi.org/25kkm/allimg/"+n+"/";
     var load=()=>{
         num+=1;
@@ -130,6 +141,19 @@ var hman=()=>{
     pic.onload=load;
     pic.src=hf+num+".jpg";
     addpic(pic);
+    }else{
+    var hf="https://tu.52kkmi.org/25kkm/allimg/"+n+"/";
+    var load2=()=>{
+        num+=1;
+        var pic=document.createElement("IMG");
+        pic.onload=load2;
+        pic.src=hf+nTom(num)+".jpg";
+        addpic(pic);
+    };
+    pic.onload=load2;
+    pic.src=hf+nTom(num)+".jpg";
+    addpic(pic);
+    }
 };
 document.getElementsByTagName("h1")[0].onclick=hman;
 </script>
