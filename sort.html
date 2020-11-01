@@ -13,9 +13,11 @@
 var f = () => {
     var str=document.getElementById("codes").value;
 	var n=str.match(/(?<=\d+\.)[\D]*(?!\D)/g);
+    document.getElementById("view").innerHTML="";
 	for(var i=0;i<n.length;i++){
 		console.log(document.getElementById("view").innerHTML+="<br>"+(i+1)+"."+n[i])
 	}}
+    //str.split(/\[.*?：/g)
 </script>
 </body>
 </html>
