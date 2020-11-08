@@ -39,8 +39,8 @@ var sort2 = () => {
     view.innerHTML="";
     var str=document.getElementById("c2").value;
     var num = parseInt(document.getElementById("t2").value);
-    var name = str.match(/(?<=\[).*?：/g)
-    var parts = str.split(/\[.*?：/g).filter(function(e){if(e!="")return e});
+    var name = str.match(/(?<=\n).*?：/g)
+    var parts = str.split(/\n.*?：/g).filter(function(e){if(e!="")return e});
     var list = [];
     var plist = [];
     var count=0;
@@ -65,26 +65,30 @@ var sort2 = () => {
             countt++;
         }
     }
-    console.log(list);
-    console.log(plist);
     for(var i=0;i<list.length;i++){
         if(list[i]=="")list.splice(i);
     }
+    plist.splice(list.length);
     var pd=true;
-    for(var i=0;i<list.length;i++){
+    var pi=0;
+    var li=0;
+    for(var i=0;i<(list.length*2);i++){
         if(pd){
-            view.innerHTML+="<br>"+list[i];
+            if(list[li]){
+            view.innerHTML+="<br>"+list[li];
             if((i+1)%num==0)pd=false;
-            continue;
+            li++;
+            console.log(i+"我在代码一");
+            continue;}
+            pd=true;
         }
-        view.innerHTML+="<br>"+plist[i];
+        console.log(i+"我在代码二");
+        view.innerHTML+="<br>"+plist[pi];
         if((i+1)%num==0)pd=true;
+        pi++;
+        //console.log(pi);
     }
-    //document.getElementById("view").innerHTML="";
-	//for(var i=0;i<n.length;i++){
-		//console.log(document.getElementById("view").innerHTML+="<br>"+(i+1)+"."+n[i])
-	//}};
-    //str.split(/\[.*?：/g)
+    console.log(plist);
     };
 </script>
 </body>
