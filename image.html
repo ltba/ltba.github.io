@@ -126,7 +126,7 @@ var nTom=(num)=>{
     }
 };
 var hman=()=>{
-    var n = prompt("输入id");
+    var n = prompt("输入链接：").split("/")[5];//输入id
     var pic=document.createElement("IMG");
     var num=1;
     if(confirm("使用/n.jpg")){
