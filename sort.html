@@ -45,7 +45,15 @@ var sort2 = () => {
     var plist = [];
     var count=0;
     var countt=1;
-    for(var i=0;i<300;i++){list.push("");plist.push("");}
+    var oo=0
+    for(var o=0;o<name.length;o++){
+        oo++;
+        var each = parts[o].match(/(?<=\d+\.)[\D]*(?!\D)/g);
+        for(let e of each){
+            oo++;
+        }
+    }
+    for(var i=0;i<(num*Math.ceil(oo/num));i++){list.push("");plist.push("");}
     for(var i=0;i<name.length;i++){
         list[count]=name[i];
         plist[count]=""; 
@@ -65,28 +73,21 @@ var sort2 = () => {
             countt++;
         }
     }
-    for(var i=0;i<list.length;i++){
-        if(list[i]=="")list.splice(i);
-    }
-    plist.splice(list.length);
     var pd=true;
     var pi=0;
     var li=0;
     for(var i=0;i<(list.length*2);i++){
         if(pd){
-            if(list[li]){
             view.innerHTML+="<br>"+list[li];
             if((i+1)%num==0)pd=false;
             li++;
             console.log(i+"我在代码一");
-            continue;}
-            pd=true;
+            continue;
         }
         console.log(i+"我在代码二");
         view.innerHTML+="<br>"+plist[pi];
         if((i+1)%num==0)pd=true;
         pi++;
-        //console.log(pi);
     }
     console.log(plist);
     };
