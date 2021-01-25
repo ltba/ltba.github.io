@@ -6,7 +6,8 @@ fetch("/music/songs.json")
     console.log("歌单请求完毕！");
     suibianqugeming=songs;
     [suibianqugeming[0],suibianqugeming[5]]=[suibianqugeming[5],suibianqugeming[0]];
-    getwy('3778678',suibianqugeming.length-1);
+    getwy(false,0);
+    //getwy('3778678',suibianqugeming.length-1);
   })
   .catch(err => console.log('请求出错，或您的浏览器不支持，请使用Chrome内核的浏览器！'));
 
@@ -27,7 +28,15 @@ function player(){
     });
     //mic.getcookie();切换页面连续播放
 }
+/*
+,
+    {
+        "name": "网易云热门歌单",
+        "author": ">>",
+        "content": []
+    }*/
 function getwy(id,index){
+if(id==false){player();return;}
       fetch("https://api.i-meto.com/meting/api?server=netease&type=playlist&id="+id)
           .then((res) => res.json())
           .then(list => {
