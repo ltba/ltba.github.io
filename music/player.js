@@ -10,6 +10,11 @@ fetch("/music/songs.json")
     //getwy('3778678',suibianqugeming.length-1);
   })
   .catch(err => console.log('请求出错，或您的浏览器不支持，请使用Chrome内核的浏览器！'));
+  
+  window.onkeydown=function(e){
+      if(e.keyCode==39)window.t.skipForward();//下一首
+      if(e.keyCode==37)t.skipBack();//上一首
+  };
 
 
 function player(){
@@ -26,6 +31,7 @@ function player(){
     listFolded:true,//列表默认折叠
     audio:suibianqugeming
     });
+    window.t=t;
     //mic.getcookie();切换页面连续播放
 }
 /*
