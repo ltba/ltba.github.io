@@ -57,6 +57,7 @@
     post=post+postu+postp+posth;
     ct.innerHTML=post;
     $('#btn').attr({'data-clipboard-text':post.replace('&#38;','&')});
+    document.getElementById('url').value=post.replace('&#38;','&');
     }
     var clipboard = new ClipboardJS('#btn');
     clipboard.on('success', function(e) {
