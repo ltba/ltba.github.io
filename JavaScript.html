@@ -123,6 +123,27 @@ function 回归系数(x,y){
     a=f(y1,b*x1);
     return [a,b];
 }
+//独立性检验
+function 卡方(a,b,c,d,relevant="x与y"){
+    var f = function (arg1,arg2)
+    {
+     var m=0,s1=arg1.toString(),s2=arg2.toString();
+     try{m+=s1.split(".")[1].length}catch(e){}
+     try{m+=s2.split(".")[1].length}catch(e){}
+     return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m)
+    };
+    var k,n,relevants;
+    n=a+b+c+d;
+    k=n*(a*d-b*c)*(a*d-b*c)/((a+b)*(a+c)*(b+d)*(c+d));
+    k=Math.round(f(k,1000))/1000;
+    if(k>=10.828){relevants="有99.9%的把握认为“"+relevant+"”有关"}
+    else if(k>=6.635){relevants="有99%的把握认为“"+relevant+"”有关"}
+    else if(k>=5.024){relevants="有97.5%的把握认为“"+relevant+"”有关"}
+    else if(k>=3.841){relevants="有95%的把握认为“"+relevant+"”有关"}
+    else if(k>=2.706){relevants="有90%的把握认为“"+relevant+"”有关"}
+    else{relevants="没有证据认为“"+relevant+"”有关"}
+    return ["K²="+k,relevants];
+}
 </script>
 
 <br>
@@ -135,6 +156,7 @@ function 回归系数(x,y){
 中位数(数组)返回中位数，<br>
 平均数(数组)返回平均数，<br>
 回归系数(数组x,数组y)返回a,b，<br>
+卡方(a,b,c,d,relevance)返回k²,relevances，<br>
 getscript(url): 导入外部js，例如: <input value='getscript("https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js")'></input><br>
 以及JavaScript的所有函数。<br><br>
 数据类型定义:<br>
