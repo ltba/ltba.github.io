@@ -56,6 +56,19 @@ function three(n){
     setTimeout(three,Number(s+'000'),num);
 }
 
+function xuchuan(n){
+    var b = $("#codes").val();
+    var a = b.split("\n");
+    if (n==a.length){
+        return
+    };
+    var $img=document.createElement("IMG");
+    $img.src=a[n];
+    $img.onload=function(){xuchuan(n+1)};
+    console.log(a[n]);
+    addpic($img);
+}
+
 function clean(){
     $(".content").html("");
 }
