@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>music——聆听·彼岸</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/ico.jpg?v=5.1.4">
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://yked.gitee.io/cai/Music_Box_New/APlayer.min.css">
+<script src="https://yked.gitee.io/cai/Music_Box_New/APlayer.min.js"></script>
+<style>
+.content{
+    background-color:#d9d9d9;
+    width:60%;
+}
+body{
+    background-color:#3399ff;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+<div class="search">
+<input type="text" id="input"><button type="button" onclick="search()">搜索</button>
+</div>
+<div class="content">
+</div>
+<footer>
+作者: <a href="https://yked.gitee.io">聆听·彼岸</a><br>
+Blog: <a href="https://yked.gitee.io">https://yked.gitee.io</a><br>
+</footer>
+<div id="player1">
+</div>
+<script>
+function search(){
+    var input = $("input").val();
+    $.ajax({
+        url: "https://songsearch.kugou.com/song_search_v2?keyword=" + input + "&page=1&pagesize=30",
+        jsonpCallback:"f",
+        success:function(list){
+            if (list.status){
+                var data = list.data.lists;
+                var singername = new Array();
+                var songname = new Array();
+                var hash = new Array();
+                var album_id = new Array();
+                var url_list = new Array();
+                
+                for (i in data){
+                    singername[i] = data[i].SingerName;
+                    songname[i] = data[i].SongName;
+                    hash[i] = data[i].FileHash;
+                    album_id[i] = data[i].AlbumID;
+                }
+                $(".content").html("");
+                for (i in singername){
+                    $(".content").append("<br><div class='"+hash[i]+"'><a href='javascript:void()' onclick='bf(\""+hash[i]+"\",\""+album_id[i]+"\")'>"+singername[i]+"——"+songname[i]+"</a> </div>");
+                }
+                ap1.list.clear();
+                for (i in singername){
+                    get_url(hash[i],album_id[i]);
+                }
+                //ap1.list.clear();
+                //ap1.list.add(url_list);
+            }else{
+                alert("接口出错！请重试或离开！");
+            }
+        },
+        dataType:"jsonp"
+    });
+}
+function bf(hash,album_id){
+    $.ajax({
+        url:"https://wwwapi.kugou.com/yy/index.php?r=play/getdata&hash="+hash+"&album_id="+album_id,
+        jsonpCallback:"f",
+        success:function(list){
+            if (list.status){
+            $('.'+hash).append(" <a href='"+list.data.play_url+"' download='"+$('.'+hash+" a").text()+"'>下载</a><br>");
+            $('.'+hash).append("<audio controls autoplay src="+list.data.play_url+"></audio>");
+            }
+        },
+        dataType:"jsonp"
+    });
+}
+function get_url(hash,album_id){
+    var data = {};
+    $.ajax({
+        url:"https://wwwapi.kugou.com/yy/index.php?r=play/getdata&hash="+hash+"&album_id="+album_id,
+        async: false,
+        jsonpCallback:"f",
+        success:function(list){
+            if (list.status){
+                ap1.list.add({name:list.data.song_name,artist:list.data.author_name,url:list.data.play_url,lrc:list.data.lyrics,cover:list.data.img});
+            }
+        },
+        dataType:"jsonp"
+    });
+}
+var ap1 = new APlayer({
+    container: document.getElementById('player1'),
+    fixed:true,
+    lrcType: 1,
+    listmaxheight: '200px',
+    listFolded:true,
+    audio:[{name:"小了白了兔",artist:"叶洛洛",url:"https://music.163.com/song/media/outer/url?id=1307186114.mp3",cover:"https://p2.music.126.net/cClUkGJp00Uf5VxjREbcoA==/109951163531804698.jpg?param=130y130",theme:'#0d81f4'}]
+});
+
+</script>
+<!--<script src="https://yked.gitee.io/background.js"></script>播放器与该js冲突-->
+</body>
+</html>

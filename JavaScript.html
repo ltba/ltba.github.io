@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaScript——聆听·彼岸</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/ico.jpg?v=5.1.4">
+<style>
+#codes{
+    width:100%;
+}
+#result{
+    width:100%;
+}
+</style>
+</head>
+<body>
+作者: <a href="https://yked.gitee.io">聆听·彼岸</a><br>
+Blog: <a href="https://yked.gitee.io">https://yked.gitee.io</a><br>
+JavaScript教程: <a href="https://www.runoob.com/js/js-tutorial.html">点我</a><br>
+本工具仅用于批量操作等JavaScript力所能及的使用。<br>
+例如(For example):
+<pre>
+<code><br>
+for (var i=1;i<10;i++){<br>
+    打印("&lt;img src='" + i + ".jpg'&gt;&lt;br&gt;\n")<br>
+}<br>
+</code>
+<code><br>
+for (var i=10;i<100;i++){<br>
+    打印("&lt;img src='" + i + ".jpg'&gt;&lt;br&gt;\n")<br>
+}<br>
+</code>
+<pre>
+for(var i=1;i<10;i++){
+打印(''+i+'.jpg\n')
+}
+for(var i=10;i<100;i++){
+打印(''+i+'.jpg\n')
+}
+for(var i=100;i<1000;i++){
+打印(''+i+'.jpg\n')
+}
+</pre>
+<br>
+<input value="var a=document.createElement('AUDIO'),b='我不去想是否能够成功 既然选择了远方 便只顾风雨兼程 我不去想能否赢得爱情 既然钟情于玫瑰 就勇敢地吐露真诚 我不去想身后会不会袭来寒风冷雨 既然目标是地平线 留给世界的只能是背影 我不去想未来是平坦还是泥泞 只要热爱生命 一切，都在意料之中';a.src='https://ai.baidu.com/aidemo?type=tns&spd=4&pit=5&vol=5&per=4&tex='+b+'&dt=1';a.play();"></input>
+注: 打印(是博主自创的，用于在下面的代码框输出字符串。)
+</pre>
+<br>
+<textarea id="codes" rows="10"></textarea>
+<div id='help'></div>
+<button type="button" onclick="运行()">运行</button><button type="button" onclick="清空输出()">清空输出</button><br>
+<textarea id="result" rows="30" ></textarea>
+<script>
+_0xb483=["\x5F\x64\x65\x63\x6F\x64\x65","\x68\x74\x74\x70\x3A\x2F\x2F\x77\x77\x77\x2E\x73\x6F\x6A\x73\x6F\x6E\x2E\x63\x6F\x6D\x2F\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x6F\x62\x66\x75\x73\x63\x61\x74\x6F\x72\x2E\x68\x74\x6D\x6C"];(function(_0xd642x1){_0xd642x1[_0xb483[0]]= _0xb483[1]})(window);var __Ox36342=["\x75\x73\x65\x20\x73\x74\x72\x69\x63\x74","\x72\x65\x73\x75\x6C\x74","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x63\x6F\x64\x65\x73","\x76\x61\x6C\x75\x65","","\x6F\x6E\x6C\x6F\x61\x64","\x62\x6F\x64\x79","\x72\x65\x66\x65\x72\x72\x65\x72","\x79\x6B\x65\x64\x2E\x67\x69\x74\x65\x65\x2E\x69\x6F","\x69\x6E\x64\x65\x78\x4F\x66","\u8BF7\u4ECE\u672C\u535A\u5BA2\u8FDB\u6765\uFF01","\x68\x72\x65\x66","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x62\x61\x69\x64\x75\x2E\x63\x6F\x6D\x2F\x73\x3F\x77\x64\x3D\x25\x45\x38\x25\x38\x31\x25\x38\x36\x25\x45\x35\x25\x39\x30\x25\x41\x43\x25\x43\x32\x25\x42\x37\x25\x45\x35\x25\x42\x44\x25\x42\x43\x25\x45\x35\x25\x42\x32\x25\x42\x38","\x6C\x65\x6E\x67\x74\x68","\x73\x6F\x72\x74"];__Ox36342[0x0];var result=document[__Ox36342[0x2]](__Ox36342[0x1]),codes=document[__Ox36342[0x2]](__Ox36342[0x3]);function 执行(_0x631dx4){try{eval(_0x631dx4)}catch(c){打印(c)}}function 打印(_0x631dx6){result[__Ox36342[0x4]]+= _0x631dx6}function 运行(){执行(codes[__Ox36342[0x4]])}function 清空输出(){result[__Ox36342[0x4]]= __Ox36342[0x5]}function 弹窗(_0x631dx6){alert(_0x631dx6)}function 询问(_0x631dx6){return confirm(_0x631dx6)}function 输入(_0x631dx6){return prompt(_0x631dx6)}document[__Ox36342[0x7]][__Ox36342[0x6]]= function(){var _0x631dx6=document[__Ox36342[0x8]];-1== _0x631dx6[__Ox36342[0xa]](__Ox36342[0x9]) && (alert(__Ox36342[0xb]),location[__Ox36342[0xc]]= __Ox36342[0xd])};function 方差(_0x631dx6){var _0x631dxd=0,_0x631dxe=[],_0x631dxf=0,_0x631dx10=0;for(var _0x631dx11 in _0x631dx6){_0x631dxd+= _0x631dx6[_0x631dx11]};_0x631dxd/= _0x631dx6[__Ox36342[0xe]];for(var _0x631dx11=0;_0x631dx11< _0x631dx6[__Ox36342[0xe]];_0x631dx11++){_0x631dxe[_0x631dx11]= (_0x631dx6[_0x631dx11]- _0x631dxd)* (_0x631dx6[_0x631dx11]- _0x631dxd)};for(var _0x631dx11 in _0x631dxe){_0x631dxf+= _0x631dxe[_0x631dx11]};return _0x631dx10= _0x631dxf/ _0x631dx6[__Ox36342[0xe]],_0x631dx10}function 中位数(_0x631dx6){var _0x631dxd=_0x631dx6[__Ox36342[0xf]](function(_0x631dx10,_0x631dx11){return _0x631dx10- _0x631dx11});if(0== _0x631dxd[__Ox36342[0xe]]% 2){var _0x631dxe=_0x631dxd[_0x631dxd[__Ox36342[0xe]]/ 2- 1],_0x631dxf=_0x631dxd[_0x631dxd[__Ox36342[0xe]]/ 2];return (_0x631dxe+ _0x631dxf)/ 2};return _0x631dxd[(_0x631dxd[__Ox36342[0xe]]- 1)/ 2]}function 平均数(_0x631dx6){var _0x631dxd=0;for(i in _0x631dx6){_0x631dxd+= _0x631dx6[i]};return _0x631dxd/ _0x631dx6[__Ox36342[0xe]]};
+function creatButton(name){
+    var b = document.createElement("BUTTON");
+    var d = document.getElementById("help");
+    b.innerHTML=name;
+    b.onclick=function(){codes.value+=name};
+    if(name=="close"){b.onclick=function(){d.style.display="none"};}
+    d.appendChild(b);
+}
+creatButton("(");
+creatButton(")");
+creatButton("{");
+creatButton("}");
+creatButton(".");
+creatButton("\"");
+creatButton("\'");
+creatButton(";");
+creatButton(",");
+creatButton("|");
+creatButton("\\");
+creatButton("!");
+creatButton("?");
+creatButton("<");
+creatButton(">");
+creatButton("[");
+creatButton("]");
+creatButton("+");
+creatButton("-");
+creatButton("*");
+creatButton("/");
+creatButton("%");
+creatButton("$");
+creatButton("&");
+creatButton("close");
+function getscript(url){
+var xmlhttp=new XMLHttpRequest();
+xmlhttp.onreadystatechange=function(){
+if (xmlhttp.readyState==4 && xmlhttp.status==200)
+{
+eval(xmlhttp.responseText);
+}
+};
+xmlhttp.open("GET",url,true);
+xmlhttp.send();
+}
+function 回归系数(x,y){
+     var f=function (被减数,减数){
+     var r1,r2,m,n; 
+     try{r1=被减数.toString().split(".")[1].length}catch(e){r1=0} 
+     try{r2=减数.toString().split(".")[1].length}catch(e){r2=0} 
+     m=Math.pow(10,Math.max(r1,r2)); 
+     n=(r1>=r2)?r1:r2; 
+     return Number(((被减数*m-减数*m)/m).toFixed(n)); }
+
+    var b=b1=a=a1 = 0;
+    var x1=y1=0;
+    
+    x1=平均数(x);
+    y1=平均数(y);
+    for(let i in x){
+        b=b+(x[i]-x1)*(y[i]-y1);
+    }
+    for(let i in x){
+        b1=b1+(x[i]-x1)*(x[i]-x1);
+    }
+    b=b/b1;
+    a=f(y1,b*x1);
+    return [a,b];
+}
+//独立性检验
+function 卡方(a,b,c,d,relevant="x与y"){
+    var f = function (arg1,arg2)
+    {
+     var m=0,s1=arg1.toString(),s2=arg2.toString();
+     try{m+=s1.split(".")[1].length}catch(e){}
+     try{m+=s2.split(".")[1].length}catch(e){}
+     return Number(s1.replace(".",""))*Number(s2.replace(".",""))/Math.pow(10,m)
+    };
+    var k,n,relevants;
+    n=a+b+c+d;
+    k=n*(a*d-b*c)*(a*d-b*c)/((a+b)*(a+c)*(b+d)*(c+d));
+    k=Math.round(f(k,1000))/1000;
+    if(k>=10.828){relevants="有99.9%的把握认为“"+relevant+"”有关"}
+    else if(k>=6.635){relevants="有99%的把握认为“"+relevant+"”有关"}
+    else if(k>=5.024){relevants="有97.5%的把握认为“"+relevant+"”有关"}
+    else if(k>=3.841){relevants="有95%的把握认为“"+relevant+"”有关"}
+    else if(k>=2.706){relevants="有90%的把握认为“"+relevant+"”有关"}
+    else{relevants="没有证据认为“"+relevant+"”有关"}
+    return ["K²="+k,relevants];
+}
+</script>
+
+<br>
+可用函数: <br>
+打印(字符串)，<br>
+弹窗(字符串)，<br>
+询问(字符串)返回true或者false，<br>
+输入(字符串)返回用户输入信息，<br>
+方差(数组)返回方差，<br>
+中位数(数组)返回中位数，<br>
+平均数(数组)返回平均数，<br>
+回归系数(数组x,数组y)返回a,b，<br>
+卡方(a,b,c,d,relevance)返回k²,relevances，<br>
+getscript(url): 导入外部js，例如: <input value='getscript("https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js")'></input><br>
+以及JavaScript的所有函数。<br><br>
+数据类型定义:<br>
+字符串: 用双引号(或单引号)括起来的<br>
+整型: 即数字<br>
+逻辑型: True和False，只有两个，分别代表真假<br>
+数组: 类似这样[1,2,3,4,5]的<br>
+字典: 类似这样{"1":1,"2":2,"3":3,"4":4,"5":5}的<br>
+</body>
+</html>
