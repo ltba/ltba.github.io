@@ -1,7 +1,0 @@
-#
-# robots.txt for https://yked.gitee.io
-#
-
-User-agent: *
-Disallow: /go
-Disallow: /404
