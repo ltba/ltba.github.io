@@ -58,14 +58,14 @@ body{
 var ls = location.search;
 var ref = document.referrer;
 if (ref.indexOf("yked.gitee.io")==-1){
-    location.href="https://yked.gitee.io";
+    location.href="https://ltba.github.io";
 }
 
 if (ls.substring(0,5) == "?url="){
     var url = ls.substring(5);
     var content = document.getElementById("content");
     content.innerHTML="<h1>正在前往：" + url + "</h1>";
-    if (url.includes("yked.gitee.io")){
+    if (url.includes("ltba.github.io")){
         location.href = url;
     }else{
     content.innerHTML="<h1>正在前往未知站点，本站不保证其安全性！</h1>";

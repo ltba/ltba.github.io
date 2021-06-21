@@ -1,5 +1,5 @@
 #
-# robots.txt for https://yked.gitee.io
+# robots.txt for https://ltba.github.io
 #
 
 User-agent: *
