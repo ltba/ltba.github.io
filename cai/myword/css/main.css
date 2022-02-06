@@ -1,0 +1,292 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #d8d2cc;
+  background-image: url(../images/background.jpg);
+  font-family: Hiragino Sans GB, WenQuanYi Micro Hei, Microsoft Yahei, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+#header {
+  position: relative;
+  height: 280px;
+  background: url(../images/banner.png) center center;
+}
+
+#header .banner-bottom {
+  position: absolute;
+  width: 534px;
+  height: 27px;
+  top: 0;
+  left: 0;
+  right: -10px;
+  bottom: -150px;
+  margin: auto;
+  background: url(../images/bt1.png) center center;
+}
+
+#header #link {
+  display: block;
+  color: #DBDBDB;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: center;
+  position: absolute;
+  width: 173px;
+  height: 27px;
+  top: 0;
+  left: 0;
+  right: -370px;
+  bottom: -150px;
+  margin: auto;
+  background: url(../images/bt2.png) center center;
+}
+
+#header #link:hover {
+  color: #FFF;
+}
+
+.wrap {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+img {
+  border-style: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.logo {
+  width: 309px;
+  max-height: 265px;
+  pointer-events: none;
+  float: left;
+}
+
+.title {
+  width: 212px;
+  max-height: 265px;
+  float: right;
+}
+
+.indexShowTable {
+  padding: 20px 0;
+  /*min-height: 140px;*/
+  text-align: center;
+}
+
+.show-table {
+  display: none;
+}
+
+.IndexMain {
+  padding: 0 5% 5% 5%;
+}
+
+.titleText {
+  font-size: 22px;
+  line-height: 40px;
+}
+
+.left {
+  float: left;
+  max-width: 45%;
+  clear: both;
+}
+
+.right {
+  float: right;
+  max-width: 45%;
+}
+
+.footer {
+  float: left;
+  margin-top: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.Table {
+  display: inline-block;
+  position: relative;
+  background-color: #C6C6C6;
+  border: 2px solid;
+  border-color: #DBDBDB #5B5B5B #5B5B5B #DBDBDB;
+  padding: 6px;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+.CraftTable>* {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.CraftTable .Table-block {
+  display: block;
+}
+
+.CraftTable>.Table-top {
+  margin-top: 28px;
+}
+
+.CraftTable>.Table-JT {
+  background: url(../images/table_jiantou.png) no-repeat;
+  width: 32px;
+  height: 26px;
+  margin: 40px 4px 0;
+}
+
+.CraftTable .TSJT {
+  background-image: url(../images/table_tishi.png);
+  display: inline-block;
+  cursor: help;
+}
+
+.invs {
+  position: relative;
+  display: inline-block;
+  background: #8B8B8B no-repeat center center / 32px 32px;
+  border: 2px solid;
+  border-color: #373737 #FFF #FFF #373737;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 1;
+  text-align: left;
+  vertical-align: bottom;
+  margin-bottom: 3px;
+}
+
+.non {
+  background: #5B5B5B no-repeat center center / 32px 32px;
+}
+
+.non a {
+  cursor: default;
+}
+
+.invs-R {
+  padding: 8px;
+}
+
+.invs-item,
+.invs-item>a:first-child {
+  position: relative;
+  display: block;
+  margin: -2px;
+  padding: 2px;
+}
+
+.Resource {
+  display: inline-block;
+  vertical-align: text-top;
+  height: 16px;
+  width: 16px;
+  background-repeat: no-repeat;
+}
+
+.inv-Resource {
+  background-image: url(../images/itemlist.png);
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+
+.dyn>*:not(.dyn-show),
+.dyn-paused>*:not(.dyn-show),
+.dyn>.dyn-subframe>*:not(.dyn-show),
+.dyn-paused>.dyn-subframe>*:not(.dyn-show) {
+  display: none;
+}
+
+.invs-stacksize {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-family: Minecraft, sans-serif !important;
+  font-weight: normal !important;
+  color: #FFF !important;
+  text-shadow: 2px 2px 0 #3F3F3F;
+  filter: dropshadow(color=#3F3F3F, offx=2, offy=2);
+  z-index: 2;
+}
+
+#minetip-tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #100010;
+  background-color: rgba(16, 0, 16, 0.94);
+  color: #FFF;
+  padding: 0.375em;
+  font-family: '微软雅黑', sans-serif;
+  font-size: 16px;
+  word-spacing: 4px;
+  white-space: nowrap;
+  line-height: 1.25em;
+  text-shadow: 0.125em 0.125em 0 #3F3F3F;
+  margin: 0.125em 0.25em;
+  pointer-events: none;
+  z-index: 99
+}
+
+#minetip-tooltip:before {
+  content: "";
+  position: absolute;
+  top: 0.125em;
+  right: -0.125em;
+  bottom: 0.125em;
+  left: -0.125em;
+  border: 0.125em solid #100010;
+  border-style: none solid;
+  border-color: rgba(16, 0, 16, 0.94)
+}
+
+#minetip-tooltip:after {
+  content: "";
+  position: absolute;
+  top: 0.125em;
+  right: 0;
+  bottom: 0.125em;
+  left: 0;
+  border: 0.125em solid #2D0A63;
+  border-image: -webkit-linear-gradient(rgba(80, 0, 255, 0.31), rgba(40, 0, 127, 0.31)) 1;
+  border-image: linear-gradient(rgba(80, 0, 255, 0.31), rgba(40, 0, 127, 0.31)) 1
+}
+
+#minetip-tooltip>.description,
+#minetip-tooltip>.minetip-description {
+  display: block;
+  margin-top: 0.25em
+}
+
+footer {
+  font-size: 12px;
+  background: #333;
+  color: #999;
+  padding: 20px 0;
+  margin-top: 40px;
+  line-height: 1.8;
+}
+
+footer a {
+  color: #999;
+}
+
+footer p {
+  margin-bottom: 10px;
+  text-align: center;
+}

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>image——聆听·彼岸</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="same-origin">
+<meta name="referrer" content="no-referrer">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/ico.jpg?v=5.1.4">
+<link rel="icon" type="image/png" sizes="16x16" href="/images/ico.jpg?v=5.1.4">
+<style>
+#codes{
+    width:100%;
+}
+.content{
+    position:absolute;
+    width:100%;
+    left:0;
+    text-align:center;
+    margin:0 auto;
+}
+img{margin:0 auto;}
+body{background-color:black;color:white}
+</style>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+</head>
+<body>
+<h1>批量图片预览</h1><br>
+作者: <a href="/">聆听·彼岸</a><br>
+Blog: <a href="/">https://ltba.github.io</a><br>
+使用方法每个链接之间用\n隔开，
+比如：<br>
+http://wx1.sinaimg.cn/crop.0.0.920.300/6b084396gy1fmrtmsz3m5j20pk08cqe3.jpg<br>
+https://wxt.sinaimg.cn/large/6b084396gy1g0yy2m8rkfj21i8106nj8.jpg<br>
+https://wx1.sinaimg.cn/large/6b084396gy1g0yy2qqwn6j21061i81kx.jpg<br>
+https://wx2.sinaimg.cn/mw690/67a2f6d6ly1fz7i69j5hoj21121jkdva.jpg<br>
+https://wx3.sinaimg.cn/mw690/6b084396gy1fz0jbstqlmj20u0140af5.jpg<br>
+https://wx1.sinaimg.cn/large/6b084396gy1fz0jbw4nhxj20u0140gqe.jpg<br>
+http://wx3.sinaimg.cn/mw690/6285c8e0ly1fknhw5c7irg20900g0u0z.gif<br>
+<textarea id="codes" rows="10"></textarea><br>
+每<input type='number' value='1' id='s'>秒<button type='button' onclick='three(0)'>打开</button>一张图片<button type="button" onclick="clear()">清空输入</button><button type="button" onclick="clean()">清空图片</button><button type="button" onclick="zero()">瞬开</button><br><br>txt<input type='file' id='txtfile' accept=".txt" onchange='settxtPreview()'>img<input type='file' id='imgfile' accept="image/gif,image/jpeg,image/jpg,image/png" onchange='setimgPreview()'>folder<input type='file' id='folderfile' multiple webkitdirectory onchange='setfolderPreview()'><br>
+<div class="content">
+</div>
+<script>
+function three(n){
+    var b = $("#codes").val();
+    var a = b.split("\n");
+    var s = $("#s").val();
+    if (n==a.length){
+        return
+    };
+    $(".content").append("<img src='" + a[n] + "'><br>");
+    num = n+1;
+    setTimeout(three,Number(s+'000'),num);
+}
+
+function xuchuan(n){
+    var b = $("#codes").val();
+    var a = b.split("\n");
+    if (n==a.length){
+        return
+    };
+    var $img=document.createElement("IMG");
+    $img.src=a[n];
+    $img.onload=function(){xuchuan(n+1)};
+    console.log(a[n]);
+    addpic($img);
+}
+
+function clean(){
+    $(".content").html("");
+}
+function zero(){
+    var b = $("#codes").val();
+    var a = b.split("\n");
+    for (var i=0;i<a.length;i++){
+        $(".content").append("<img src='" + a[i] + "'><br>");
+    }
+}
+function settxtPreview() {
+        var docObj = document.getElementById("txtfile");
+        //console.log(docObj.files[0])
+        if (docObj.files && docObj.files[0]) {
+            var reader = new FileReader();
+            reader.readAsText(docObj.files[0],'UTF-8');//发起异步请求
+            reader.onload = function(){
+                clear();
+                $("#codes").val(this.result);
+            }
+        }
+}
+function setimgPreview() {
+        var docObj = document.getElementById("imgfile");
+        //console.log(docObj.files[0])URL.createObjectURL(docObj.files[0])
+        if (docObj.files && docObj.files[0]) {
+            var pic=document.createElement("IMG");
+            pic.onload=function(){window.URL.revokeObjectURL(this.src);};
+            pic.className="lazy";
+            pic.src=URL.createObjectURL(docObj.files[0]);
+            addpic(pic);
+            $(".content").append(document.createElement("BR"));
+            docObj.value="";
+        }
+}
+function setfolderPreview() {
+        var docObj = document.getElementById("folderfile").files;
+        let i=0;
+        for(var file of docObj){
+            i+=1;
+            var pic=document.createElement("IMG");
+            pic.onload=function(){window.URL.revokeObjectURL(this.src);};
+            pic.className="lazy";
+            pic.setAttribute("data-original",URL.createObjectURL(file));
+            addpic(pic);
+            $(".content").append(document.createElement("BR"));
+            console.log("已加载第"+i+"张图");
+        }
+        document.getElementById("folderfile").value="";
+}
+function addpic(dom){
+    $(".content").append(dom);
+    $(dom).lazyload({
+    effect:'fadeIn'
+});
+}
+function clear(){
+    $("#codes").val("");
+}
+var nTom=(num)=>{
+    switch(num.toString().length){
+        case 1:
+        return "00"+num;
+        case 2:
+        return "0"+num;
+        default:
+        return num;
+    }
+};
+var hman=()=>{
+    var n = prompt("输入链接：").split("/")[5];//输入id
+    var pic=document.createElement("IMG");
+    var num=1;
+    if(confirm("使用/n.jpg")){
+    var hf="https://tu.52kkmi.org/25kkm/allimg/"+n+"/";
+    var load=()=>{
+        num+=1;
+        var pic=document.createElement("IMG");
+        pic.onload=load;
+        pic.src=hf+num+".jpg";
+        addpic(pic);
+    };
+    pic.onload=load;
+    pic.src=hf+num+".jpg";
+    addpic(pic);
+    }else{
+    var hf="https://tu.52kkmi.org/25kkm/allimg/"+n+"/";
+    var load2=()=>{
+        num+=1;
+        var pic=document.createElement("IMG");
+        pic.onload=load2;
+        pic.src=hf+nTom(num)+".jpg";
+        addpic(pic);
+    };
+    pic.onload=load2;
+    pic.src=hf+nTom(num)+".jpg";
+    addpic(pic);
+    }
+};
+document.getElementsByTagName("h1")[0].onclick=hman;
+</script>
+</body>
+</html>

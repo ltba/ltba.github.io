@@ -1,0 +1,7 @@
+#
+# robots.txt for https://ltba.github.io
+#
+
+User-agent: *
+Disallow: /go
+Disallow: /404

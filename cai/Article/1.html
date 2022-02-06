@@ -1,0 +1,67 @@
+<!DOCYTPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="icon" href="../favicon.ico" type="image/x-icon"/>
+<title>全民K歌接口——水瓶座</title>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../title_change.js"></script>
+<script src="../社会主义核心价值观.js"></script>
+<script src="article.js"></script>
+<link rel="stylesheet" href="article.css">
+</head>
+<body>
+<div class="head">
+</div>
+<div class="body">
+<div class="feihua"><!--可能用到的<img style="" src="">-->
+废话框：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先说一下，经过我不懈的努力，在耗费九牛二虎之力，用出了比吃奶的力气大n倍，用了n多的时间终于，功夫不负有心人，把这个简单界面弄了出来。可以说，从此，我也是有博客（Blog）的人了。尽管不漂亮，但是这是用我的知识制造的，我喜欢。在这过程中，我学了很多东西，尽管也知道了有捷径，比如说Hexo什么的，但我还是坚持了下来。弄好了，看着自己的成就，真的很开心。好了，废话完了。先来让装逼大佬来镇站（镇站图）：<br><img width="50%" height="25%" src="https://ws3.sinaimg.cn/large/005BYqpgly1fznlstlc7ag308c04oqv5.jpg"><img width="50%" height="25%" src="https://ws3.sinaimg.cn/large/005BYqpgly1fznlys1312g306o03qqub.jpg">
+</div>
+<div class="zhengwen">
+正文：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+好了，今天的主角儿是全民K歌。全民K歌，相信很多人都玩过，但是也有很多人不玩了，就像我。但是不玩归不玩，有时候却也想念那些好听的小姐姐的声音。可能有人会说下载了，那新歌呢？想听就再下载呗！也是，可是我不喜欢下载安装那么多软件，所以，我想试试有没有别的方法。抓包，抓过了，技术不行。所以只能从分享链接入手了。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+废话不多说，经过一系列探索得到了一下链接：https://node.kg.qq.com/cgi/fcgi-bin/kg_ugc_get_homepage?jsonpCallback=callback_1&g_tk=5381&outCharset=utf-8&format=jsonp&type=get_ugc&start=4&num=8&touin=&share_uid=609d9c8d202e35&g_tk_openkey=5381&_=1548593853178
+<br><br>
+以及以下探索：<br>
+jsonpCallback：返回函数名<br>
+g_tk：未知<br>
+outCharset：编码<br>
+format：格式<br>
+type：类型<br>
+start：返回页数<br>
+num：返回歌曲数<br>
+touin：为空，暂时未知，不能去掉<br>
+share_uid：歌手的账号uid<br>
+g_tk_openkey：未知<br>
+_：现行时间戳，精准到毫秒，js用a = Math.round(new Date());<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+我一看，看到了jsonpCallback=callback_1，那给我激动的。本来最近因为同源策略犯的愁一下全没了。好！有这么好的东西不好好利用怎么行！<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+说做就做，上代码：<br>
+<div class="code"><pre><ol>
+<li>var time = Math.round(new Date());</li>
+<li>$.ajax({</li>
+<li>    url:"https://node.kg.qq.com/cgi/fcgi-bin/kg_ugc_get_homepage?jsonpCallback=callback_2&g_tk=5381&<br>outCharset=utf-8&format=jsonp&type=get_ugc&start=1&num=15&touin=&share_uid=609d9c8d202e35&g_tk_openkey=5381&_=" + time,</li>
+<li>    jsonpCallback:"callback_2",</li>
+<li>    success:function(data){</li>
+<li>        //var result = JSON.stringify(data);</li>
+<li>        var result = data.data.ugclist;</li>
+<li>        alert(result[0].avatar);</li>
+<li>    },</li>
+<li>    dataType:'jsonp'</li>
+<li>    </li>
+<li>}); </li></ol></pre>
+</div>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+好了，可是，数据取到了，可是没有音乐文件啊！没错，其实这不是什么重要的接口，不然腾讯也不会开放。不过，天无绝人之路。我就继续看了看音乐播放的链接（随便取的）：https://node.kg.qq.com/play?s=VV_Ln8VgS6rPiVxE&g_f=personal 可以发现链接就是上面接口返回的shareid组成的https://node.kg.qq.com/play?s=[shareid]&g_f=personal。可是这又怎样。就这样，这链接有自动播放功能。于是聪明的我想到了把它放进iframe里，再把iframe隐藏掉的骚操作。好了，今天的记录就做到这里。想看成品就<a href="../quanmin_sing">点我</a><br>写于<a href="javascript:(void)">2019.1.27</a>
+</div>
+<footer class="foot">
+
+</footer>
+</div>
+</body>
+</html>
